@@ -20,7 +20,7 @@ namespace BudgetApplication.Data
         public void Seed()
         {
            
-             _context.Database.Migrate();
+              _context.Database.Migrate();
 
 
             if (!_context.Roles.Any())

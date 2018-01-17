@@ -5,27 +5,32 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using BudgetApplication.Data;
 using BudgetApplication.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
-namespace BudgetApplication.Data
+namespace BudgetApplication.Controllers
 {
-    public class TransactionsController : Controller
+    [Authorize(Roles = "Administrator, User")]
+    public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public TransactionsController(ApplicationDbContext context)
+        public CategoriesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Transactions
+        // GET: Categories
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Transactions.Include(t => t.Item);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return View(await _context.Categories.Where(x => x.UserID == userId).ToListAsync());
         }
 
-        // GET: Transactions/Details/5
+
+        // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +38,46 @@ namespace BudgetApplication.Data
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions
-                .Include(t => t.Item)
-                .SingleOrDefaultAsync(m => m.TransactionID == id);
-            if (transaction == null)
+            var category = await _context.Categories
+                .SingleOrDefaultAsync(m => m.CategoryID == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(transaction);
+            return View(category);
         }
 
-        // GET: Transactions/Create
+        // GET: Categories/Create
         public IActionResult Create()
         {
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemName");
             return View();
         }
 
-        // POST: Transactions/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TransactionID,ItemID,Price,TransactionDate,TransactionPlace,ExchangeRate")] Transaction transaction)
+        public async Task<IActionResult> Create(Category category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(transaction);
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var values = new Category
+                {
+                    CategoryID = category.CategoryID,
+                    CategoryName = category.CategoryName,
+                    UserID = userId
+                };
+                _context.Add(values);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemID", transaction.ItemID);
-            return View(transaction);
+            return View(category);
         }
 
-        // GET: Transactions/Edit/5
+        // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +85,22 @@ namespace BudgetApplication.Data
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.TransactionID == id);
-            if (transaction == null)
+            var category = await _context.Categories.SingleOrDefaultAsync(m => m.CategoryID == id);
+            if (category == null)
             {
                 return NotFound();
             }
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemID", transaction.ItemID);
-            return View(transaction);
+            return View(category);
         }
 
-        // POST: Transactions/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransactionID,ItemID,Price,TransactionDate,TransactionPlace,ExchangeRate")] Transaction transaction)
+        public async Task<IActionResult> Edit(int id, Category category)
         {
-            if (id != transaction.TransactionID)
+            if (id != category.CategoryID)
             {
                 return NotFound();
             }
@@ -101,12 +109,19 @@ namespace BudgetApplication.Data
             {
                 try
                 {
-                    _context.Update(transaction);
+                    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var values = new Category
+                    {
+                        CategoryID = category.CategoryID,
+                        CategoryName = category.CategoryName,
+                        UserID = userId
+                    };
+                    _context.Update(values);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TransactionExists(transaction.TransactionID))
+                    if (!CategoryExists(category.CategoryID))
                     {
                         return NotFound();
                     }
@@ -117,11 +132,10 @@ namespace BudgetApplication.Data
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemID", transaction.ItemID);
-            return View(transaction);
+            return View(category);
         }
 
-        // GET: Transactions/Delete/5
+        // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +143,30 @@ namespace BudgetApplication.Data
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions
-                .Include(t => t.Item)
-                .SingleOrDefaultAsync(m => m.TransactionID == id);
-            if (transaction == null)
+            var category = await _context.Categories
+                .SingleOrDefaultAsync(m => m.CategoryID == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(transaction);
+            return View(category);
         }
 
-        // POST: Transactions/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.TransactionID == id);
-            _context.Transactions.Remove(transaction);
+            var category = await _context.Categories.SingleOrDefaultAsync(m => m.CategoryID == id);
+            _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TransactionExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Transactions.Any(e => e.TransactionID == id);
+            return _context.Categories.Any(e => e.CategoryID == id);
         }
     }
 }

@@ -3,10 +3,34 @@ C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\bin\Debug\netc
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.dev.json
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
-C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csprojResolveAssemblyReference.cache
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csproj.CoreCompileInputs.cache
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfoInputs.cache
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\kamil\Desktop\projektzespolowy\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csprojResolveAssemblyReference.cache
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.deps.json
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.json
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.dev.json
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csprojResolveAssemblyReference.cache
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csproj.CoreCompileInputs.cache
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfoInputs.cache
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\kamil\Desktop\projektzespolowy\12 z kontrolerami dziala\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.deps.json
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.json
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.dev.json
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csprojResolveAssemblyReference.cache
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csproj.CoreCompileInputs.cache
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfoInputs.cache
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb

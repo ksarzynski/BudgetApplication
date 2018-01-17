@@ -8,15 +8,15 @@ namespace BudgetApplication.Models
 {
     public class Category
     {
+        [Display(Name = "Category name")]
         public int CategoryID { get; set; }
-        [Display(Name = "Subcategory name")]
-        public int SubcategoryID { get; set; }
+
         [Display(Name = "Category name")]
         public string CategoryName { get; set; }
 
-        public Subcategory Subcategory { get; set; }
+        public string UserID { get; set; }
 
-        public ICollection<Item> Items { get; set; }
+        public ICollection<Subcategory> Subcategories { get; set; }
 
     }
 }

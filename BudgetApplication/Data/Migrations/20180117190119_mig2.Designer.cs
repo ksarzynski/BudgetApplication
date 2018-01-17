@@ -11,8 +11,8 @@ using System;
 namespace BudgetApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180115194408_init")]
-    partial class init
+    [Migration("20180117190119_mig2")]
+    partial class mig2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,11 +79,9 @@ namespace BudgetApplication.Data.Migrations
 
                     b.Property<string>("CategoryName");
 
-                    b.Property<int>("SubcategoryID");
+                    b.Property<string>("UserID");
 
                     b.HasKey("CategoryID");
-
-                    b.HasIndex("SubcategoryID");
 
                     b.ToTable("Categories");
                 });
@@ -97,9 +95,15 @@ namespace BudgetApplication.Data.Migrations
 
                     b.Property<string>("ItemName");
 
+                    b.Property<int?>("SubcategoryID");
+
+                    b.Property<string>("UserID");
+
                     b.HasKey("ItemID");
 
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("SubcategoryID");
 
                     b.ToTable("Items");
                 });
@@ -109,9 +113,15 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<int>("SubcategoryID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CategoryID");
+
                     b.Property<string>("SubcategoryName");
 
+                    b.Property<string>("UserID");
+
                     b.HasKey("SubcategoryID");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Subcategories");
                 });
@@ -130,6 +140,8 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<DateTime>("TransactionDate");
 
                     b.Property<string>("TransactionPlace");
+
+                    b.Property<string>("UserID");
 
                     b.HasKey("TransactionID");
 
@@ -246,18 +258,22 @@ namespace BudgetApplication.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("BudgetApplication.Models.Category", b =>
-                {
-                    b.HasOne("BudgetApplication.Models.Subcategory", "Subcategory")
-                        .WithMany("Categories")
-                        .HasForeignKey("SubcategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("BudgetApplication.Models.Item", b =>
                 {
                     b.HasOne("BudgetApplication.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BudgetApplication.Models.Subcategory")
                         .WithMany("Items")
+                        .HasForeignKey("SubcategoryID");
+                });
+
+            modelBuilder.Entity("BudgetApplication.Models.Subcategory", b =>
+                {
+                    b.HasOne("BudgetApplication.Models.Category", "Category")
+                        .WithMany("Subcategories")
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

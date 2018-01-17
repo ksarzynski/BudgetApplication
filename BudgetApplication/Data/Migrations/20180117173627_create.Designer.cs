@@ -11,9 +11,10 @@ using System;
 namespace BudgetApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180117173627_create")]
+    partial class create
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,8 +79,6 @@ namespace BudgetApplication.Data.Migrations
 
                     b.Property<string>("CategoryName");
 
-                    b.Property<string>("UserID");
-
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
@@ -95,8 +94,6 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<string>("ItemName");
 
                     b.Property<int?>("SubcategoryID");
-
-                    b.Property<string>("UserID");
 
                     b.HasKey("ItemID");
 
@@ -115,8 +112,6 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<int>("CategoryID");
 
                     b.Property<string>("SubcategoryName");
-
-                    b.Property<string>("UserID");
 
                     b.HasKey("SubcategoryID");
 

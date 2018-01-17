@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BudgetApplication.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,35 +22,35 @@ namespace BudgetApplication.Data.Migrations
                 table: "AspNetRoles");
 
             migrationBuilder.CreateTable(
-                name: "Subcategories",
-                columns: table => new
-                {
-                    SubcategoryID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SubcategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subcategories", x => x.SubcategoryID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
                     CategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubcategoryID = table.Column<int>(type: "int", nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subcategories",
+                columns: table => new
+                {
+                    SubcategoryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CategoryID = table.Column<int>(type: "int", nullable: false),
+                    SubcategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subcategories", x => x.SubcategoryID);
                     table.ForeignKey(
-                        name: "FK_Categories_Subcategories_SubcategoryID",
-                        column: x => x.SubcategoryID,
-                        principalTable: "Subcategories",
-                        principalColumn: "SubcategoryID",
+                        name: "FK_Subcategories_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -61,7 +61,8 @@ namespace BudgetApplication.Data.Migrations
                     ItemID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
-                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SubcategoryID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,6 +73,12 @@ namespace BudgetApplication.Data.Migrations
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Items_Subcategories_SubcategoryID",
+                        column: x => x.SubcategoryID,
+                        principalTable: "Subcategories",
+                        principalColumn: "SubcategoryID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,13 +119,18 @@ namespace BudgetApplication.Data.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_SubcategoryID",
-                table: "Categories",
+                name: "IX_Items_CategoryID",
+                table: "Items",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_SubcategoryID",
+                table: "Items",
                 column: "SubcategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_CategoryID",
-                table: "Items",
+                name: "IX_Subcategories_CategoryID",
+                table: "Subcategories",
                 column: "CategoryID");
 
             migrationBuilder.CreateIndex(
@@ -148,10 +160,10 @@ namespace BudgetApplication.Data.Migrations
                 name: "Items");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Subcategories");
 
             migrationBuilder.DropTable(
-                name: "Subcategories");
+                name: "Categories");
 
             migrationBuilder.DropIndex(
                 name: "UserNameIndex",
