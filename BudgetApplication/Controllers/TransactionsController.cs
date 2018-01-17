@@ -18,6 +18,7 @@ namespace BudgetApplication.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+
         public TransactionsController(ApplicationDbContext context)
         {
             _context = context;
@@ -54,7 +55,8 @@ namespace BudgetApplication.Controllers
         // GET: Transactions/Create
         public IActionResult Create()
         {
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemName");
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId), "ItemID", "ItemName");
             return View();
         }
 
@@ -84,7 +86,8 @@ namespace BudgetApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemID", transaction.ItemID);
+            var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId2), "ItemID", "ItemID", transaction.ItemID);
             return View(transaction);
         }
 
@@ -101,7 +104,8 @@ namespace BudgetApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemName", transaction.ItemID);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
 
@@ -148,7 +152,8 @@ namespace BudgetApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ItemID"] = new SelectList(_context.Items, "ItemID", "ItemName", transaction.ItemID);
+            var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId2), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
 

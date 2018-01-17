@@ -52,7 +52,8 @@ namespace BudgetApplication.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["CategoryID"] = new SelectList(_context.Categories, "CategoryID", "CategoryName");
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId), "CategoryID", "CategoryName");
             return View();
         }
 
@@ -77,7 +78,8 @@ namespace BudgetApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.Categories, "CategoryID", "CategoryID", item.CategoryID);
+            var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId2), "CategoryID", "CategoryID", item.CategoryID);
             return View(item);
         }
 
@@ -94,7 +96,8 @@ namespace BudgetApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryID"] = new SelectList(_context.Categories, "CategoryID", "CategoryName", item.CategoryID);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId), "CategoryID", "CategoryName", item.CategoryID);
             return View(item);
         }
 
@@ -138,7 +141,8 @@ namespace BudgetApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.Categories, "CategoryID", "CategoryName", item.CategoryID);
+            var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId2), "CategoryID", "CategoryName", item.CategoryID);
             return View(item);
         }
 
