@@ -7,9 +7,11 @@ using BudgetApplication.Models;
 using BudgetApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BudgetApplication.Controllers
 {
+    [Authorize(Roles = "Administrator, User")]
     public class LineChartController : Controller
     {
         private readonly ApplicationDbContext _context;
