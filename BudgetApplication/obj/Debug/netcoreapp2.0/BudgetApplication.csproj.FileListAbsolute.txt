@@ -34,3 +34,15 @@ C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\De
 C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
 C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\kamil\Desktop\projektzespolowy\projekt\projekt\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.deps.json
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.json
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.dev.json
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csprojResolveAssemblyReference.cache
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csproj.CoreCompileInputs.cache
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfoInputs.cache
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\Damian\Source\Repos\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
