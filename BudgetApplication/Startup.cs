@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using BudgetApplication.Data;
 using BudgetApplication.Models;
 using BudgetApplication.Services;
+using BudgetApplication.Repository;
 
 namespace BudgetApplication
 {
@@ -35,10 +32,8 @@ namespace BudgetApplication
                 .AddDefaultTokenProviders();
 
             services.AddScoped<ApplicationDbInitializer>();
-
-
             services.AddTransient<IEmailSender, EmailSender>();
-
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddMvc();
         }
 
@@ -51,8 +46,6 @@ namespace BudgetApplication
                 app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
                 app.UseStaticFiles();
-
-
             }
             else
             {

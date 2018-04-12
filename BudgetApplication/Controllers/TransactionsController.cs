@@ -43,7 +43,7 @@ namespace BudgetApplication.Controllers
 
             var transaction = await _context.Transactions
                 .Include(t => t.Item)
-                .SingleOrDefaultAsync(m => m.TransactionID == id);
+                .SingleOrDefaultAsync(m => m.Id == id);
             if (transaction == null)
             {
                 return NotFound();
@@ -73,7 +73,7 @@ namespace BudgetApplication.Controllers
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var values = new Transaction
                 {
-                    TransactionID = transaction.TransactionID,
+                    Id = transaction.Id,
                     ItemID = transaction.ItemID,
                     Price = transaction.Price,
                     TransactionDate = transaction.TransactionDate,
@@ -99,7 +99,7 @@ namespace BudgetApplication.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.TransactionID == id);
+            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.Id == id);
             if (transaction == null)
             {
                 return NotFound();
@@ -116,7 +116,7 @@ namespace BudgetApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Transaction transaction)
         {
-            if (id != transaction.TransactionID)
+            if (id != transaction.Id)
             {
                 return NotFound();
             }
@@ -128,7 +128,7 @@ namespace BudgetApplication.Controllers
                     var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                     var values = new Transaction
                     {
-                        TransactionID = transaction.TransactionID,
+                        Id = transaction.Id,
                         ItemID = transaction.ItemID,
                         Price = transaction.Price,
                         TransactionDate = transaction.TransactionDate,
@@ -141,7 +141,7 @@ namespace BudgetApplication.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TransactionExists(transaction.TransactionID))
+                    if (!TransactionExists(transaction.Id))
                     {
                         return NotFound();
                     }
@@ -167,7 +167,7 @@ namespace BudgetApplication.Controllers
 
             var transaction = await _context.Transactions
                 .Include(t => t.Item)
-                .SingleOrDefaultAsync(m => m.TransactionID == id);
+                .SingleOrDefaultAsync(m => m.Id == id);
             if (transaction == null)
             {
                 return NotFound();
@@ -181,7 +181,7 @@ namespace BudgetApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.TransactionID == id);
+            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.Id == id);
             _context.Transactions.Remove(transaction);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -189,7 +189,7 @@ namespace BudgetApplication.Controllers
 
         private bool TransactionExists(int id)
         {
-            return _context.Transactions.Any(e => e.TransactionID == id);
+            return _context.Transactions.Any(e => e.Id == id);
         }
     }
 }

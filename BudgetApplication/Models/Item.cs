@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetApplication.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BudgetApplication.Models
 {
-    public class Item
+    public class Item : BaseEntity
     {
-        [Display(Name = "Item name")]
-        public int ItemID { get; set; }
 
         [Display(Name = "Category name")]
         public int CategoryID { get; set; }

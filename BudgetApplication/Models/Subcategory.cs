@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetApplication.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace BudgetApplication.Models
 {
-    public class Subcategory
+    public class Subcategory : BaseEntity
     {
-        [Display(Name = "Subcategory name")]
-        public int SubcategoryID { get; set; }
-
         [Display(Name = "Category name")]
         public int CategoryID { get; set; }
 

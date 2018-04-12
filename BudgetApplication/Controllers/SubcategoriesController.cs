@@ -9,178 +9,107 @@ using BudgetApplication.Data;
 using BudgetApplication.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using BudgetApplication.Repository;
 
 namespace BudgetApplication.Controllers
 {
     [Authorize(Roles = "Administrator, User")]
     public class SubcategoriesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository<Subcategory> _subcategoriesRepository;
+        public SubcategoriesController(IRepository<Subcategory> context) => _subcategoriesRepository = context;
 
-        public SubcategoriesController(ApplicationDbContext context)
+        [HttpGet]
+        public IActionResult Index()
         {
-            _context = context;
+            return View(_subcategoriesRepository.GetAll().AsEnumerable());
         }
 
-        // GET: Subcategories
-        public async Task<IActionResult> Index()
+        // GET: Products/Details/5
+        public IActionResult Details(int id)
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var applicationDbContext = _context.Subcategories.Include(s => s.Category).Where(x => x.UserID == userId);
-            return View(await applicationDbContext.ToListAsync());
+            var item = _subcategoriesRepository.Get(id);
+            if (item == null) return NotFound();
+
+            return View(item);
         }
-
-        // GET: Subcategories/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public ActionResult Create()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var subcategory = await _context.Subcategories
-                .Include(s => s.Category)
-                .SingleOrDefaultAsync(m => m.SubcategoryID == id);
-            if (subcategory == null)
-            {
-                return NotFound();
-            }
-
-            return View(subcategory);
-        }
-
-        // GET: Subcategories/Create
-        public IActionResult Create()
-        {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId), "CategoryID", "CategoryName");
             return View();
         }
 
-        // POST: Subcategories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Subcategory subcategory)
+        public ActionResult Create([Bind("Id,SubcategoryName")] Subcategory subcategory)
         {
             if (ModelState.IsValid)
             {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var values = new Subcategory
-                {
-                    SubcategoryID = subcategory.SubcategoryID,
-                    CategoryID = subcategory.CategoryID,
-                    SubcategoryName = subcategory.SubcategoryName,
-                    UserID = userId
-
-                };
-                _context.Add(values);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _subcategoriesRepository.Insert(subcategory);
+                return RedirectToAction("Index");
             }
-            var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId2), "CategoryID", "CategoryName", subcategory.CategoryID);
+
             return View(subcategory);
         }
 
-        // GET: Subcategories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
-            if (id == null)
+            Subcategory subcategory = _subcategoriesRepository.Get(id);
+            if (id != subcategory.Id)
             {
                 return NotFound();
             }
-
-            var subcategory = await _context.Subcategories.SingleOrDefaultAsync(m => m.SubcategoryID == id);
-            if (subcategory == null)
-            {
-                return NotFound();
-            }
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId), "CategoryID", "CategoryName", subcategory.CategoryID);
             return View(subcategory);
         }
 
-        // POST: Subcategories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Subcategory subcategory)
+        public ActionResult Edit([Bind("Id,SubcategoryName")] Subcategory subcategory)
         {
-            if (id != subcategory.SubcategoryID)
+            if (subcategory == null)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                    var values = new Subcategory
-                    {
-                        SubcategoryID = subcategory.SubcategoryID,
-                        CategoryID = subcategory.CategoryID,
-                        SubcategoryName = subcategory.SubcategoryName,
-                        UserID = userId
-
-                    };
-                    _context.Update(values);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SubcategoryExists(subcategory.SubcategoryID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _subcategoriesRepository.Update(subcategory);
+                return RedirectToAction("Index");
             }
-            var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["CategoryID"] = new SelectList(_context.Categories.Where(x => x.UserID == userId2), "CategoryID", "CategoryName", subcategory.CategoryID);
             return View(subcategory);
         }
 
-        // GET: Subcategories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: Products/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-            var subcategory = await _context.Subcategories
-                .Include(s => s.Category)
-                .SingleOrDefaultAsync(m => m.SubcategoryID == id);
+            Subcategory subcategory = _subcategoriesRepository.Get(id);
             if (subcategory == null)
             {
-                return NotFound();
+                return BadRequest();
             }
-
             return View(subcategory);
         }
 
-        // POST: Subcategories/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            var subcategory = await _context.Subcategories.SingleOrDefaultAsync(m => m.SubcategoryID == id);
-            _context.Subcategories.Remove(subcategory);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool SubcategoryExists(int id)
-        {
-            return _context.Subcategories.Any(e => e.SubcategoryID == id);
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            Subcategory subcategory = _subcategoriesRepository.Get(id);
+            if (subcategory == null)
+            {
+                return BadRequest();
+            }
+            _subcategoriesRepository.Delete(subcategory);
+            return RedirectToAction("Index");
         }
     }
 }
