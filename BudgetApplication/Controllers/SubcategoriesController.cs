@@ -24,10 +24,9 @@ namespace BudgetApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var subcategories = await _subcategoriesRepository.GetAllForUserID(userId);
-
-            return View(subcategories);
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var subcategories = await _subcategoriesRepository.GetAllAsync();
+            return View(subcategories.Where(x => x.UserID == userId));
         }
 
         public async Task<IActionResult> Details(int id)

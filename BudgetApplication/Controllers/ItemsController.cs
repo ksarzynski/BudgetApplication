@@ -63,11 +63,17 @@ namespace BudgetApplication.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
             Item item = await _itemsRepository.Get(id);
             if (id != item.ItemID)
             {
                 return NotFound();
             }
+
             ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
             return View(item);
         }

@@ -51,7 +51,7 @@ namespace BudgetApplication.Repository
         {
             if (entity == null)
             {
-                throw new System.ArgumentNullException("There was a problem with items entity.");
+                throw new ArgumentNullException("There was a problem with items entity.");
             }
             _entity.Add(entity);
             _context.SaveChanges();
@@ -66,7 +66,7 @@ namespace BudgetApplication.Repository
             }
             else
             {
-                throw new System.ArgumentNullException("There was a problem with items entity.");
+                throw new ArgumentNullException("There was a problem with items entity.");
             }
 
         }
@@ -80,7 +80,7 @@ namespace BudgetApplication.Repository
             }
             else
             {
-                throw new System.ArgumentNullException("There was a problem with items Entity.");
+                throw new ArgumentNullException("There was a problem with items Entity.");
             }
         }
         public bool ItemExists(int id)

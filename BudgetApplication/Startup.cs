@@ -36,7 +36,7 @@ namespace BudgetApplication
             services.AddTransient<ISubcategoriesRepository, SubcategoriesRepository>();
             services.AddTransient<ICategoriesRepository, CategoriesRepository>();
             services.AddTransient<IItemsRepository, ItemsRepository>();
-            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<ITransactionsRepository, TransactionRepository>();
             services.AddMvc();
         }
 

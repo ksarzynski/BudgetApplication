@@ -10,27 +10,29 @@ using BudgetApplication.Models;
 using System.Security.Claims;
 using BudgetApplication.Roles;
 using Microsoft.AspNetCore.Authorization;
+using BudgetApplication.Repository;
 
 namespace BudgetApplication.Controllers
 {
     [Authorize(Roles = "Administrator, User")]
     public class TransactionsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ITransactionsRepository _transactionsRepository;
+        private readonly IItemsRepository _itemsRepository;
 
 
-        public TransactionsController(ApplicationDbContext context)
+        public TransactionsController(ITransactionsRepository transactionsRepository, IItemsRepository itemsRepository)
         {
-            _context = context;
+            _transactionsRepository = transactionsRepository;
+            _itemsRepository = itemsRepository;
         }
 
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var applicationDbContext = _context.Transactions.Include(t => t.Item).Where(x => x.UserID == userId);
-            return View(await applicationDbContext.ToListAsync());
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var items = await _transactionsRepository.GetAllAsync();
+            return View(items.Where(x => x.UserID == userId));
         }
 
         // GET: Transactions/Details/5
@@ -41,9 +43,7 @@ namespace BudgetApplication.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions
-                .Include(t => t.Item)
-                .SingleOrDefaultAsync(m => m.TransactionID == id);
+            var transaction = await _transactionsRepository.Get(id);
             if (transaction == null)
             {
                 return NotFound();
@@ -53,10 +53,10 @@ namespace BudgetApplication.Controllers
         }
 
         // GET: Transactions/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId), "ItemID", "ItemName");
+            ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId), "ItemID", "ItemName");
             return View();
         }
 
@@ -80,14 +80,12 @@ namespace BudgetApplication.Controllers
                     TransactionPlace = transaction.TransactionPlace,
                     ExchangeRate = transaction.ExchangeRate,
                     UserID = userId
-
                 };
-                _context.Add(values);
-                await _context.SaveChangesAsync();
+                _transactionsRepository.Insert(values);
                 return RedirectToAction(nameof(Index));
             }
             var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId2), "ItemID", "ItemID", transaction.ItemID);
+            ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId2), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
 
@@ -99,13 +97,13 @@ namespace BudgetApplication.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.TransactionID == id);
+            var transaction = await _transactionsRepository.Get(id);
             if (transaction == null)
             {
                 return NotFound();
             }
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId), "ItemID", "ItemName", transaction.ItemID);
+            ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
 
@@ -136,12 +134,11 @@ namespace BudgetApplication.Controllers
                         ExchangeRate = transaction.ExchangeRate,
                         UserID = userId
                     };
-                    _context.Update(values);
-                    await _context.SaveChangesAsync();
+                    _transactionsRepository.Update(values);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TransactionExists(transaction.TransactionID))
+                    if (!_transactionsRepository.TransactionExists(transaction.TransactionID))
                     {
                         return NotFound();
                     }
@@ -153,7 +150,7 @@ namespace BudgetApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             var userId2 = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["ItemID"] = new SelectList(_context.Items.Where(x => x.UserID == userId2), "ItemID", "ItemName", transaction.ItemID);
+            ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId2), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
 
@@ -165,9 +162,7 @@ namespace BudgetApplication.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transactions
-                .Include(t => t.Item)
-                .SingleOrDefaultAsync(m => m.TransactionID == id);
+            var transaction = await _transactionsRepository.Get(id);
             if (transaction == null)
             {
                 return NotFound();
@@ -181,15 +176,9 @@ namespace BudgetApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var transaction = await _context.Transactions.SingleOrDefaultAsync(m => m.TransactionID == id);
-            _context.Transactions.Remove(transaction);
-            await _context.SaveChangesAsync();
+            var transaction = await _transactionsRepository.Get(id);
+            _transactionsRepository.Delete(transaction);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool TransactionExists(int id)
-        {
-            return _context.Transactions.Any(e => e.TransactionID == id);
         }
     }
 }
