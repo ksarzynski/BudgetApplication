@@ -16,7 +16,7 @@
                     @Html.DisplayNameFor(model => model.ItemName)
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.Subcategory)
             </th>
             <th></th>
         </tr>
@@ -28,12 +28,12 @@
                 @Html.DisplayFor(modelItem => item.ItemName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                @Html.DisplayFor(modelItem => item.Subcategory.SubcategoryName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-warning" style="height: 35px">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success" style="height: 35px">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="height: 35px">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ItemID"class="btn btn-warning" style="height: 35px">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.ItemID" class="btn btn-success" style="height: 35px">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.ItemID" class="btn btn-danger" style="height: 35px">Delete</a>
             </td>
         </tr>
 }

@@ -73,43 +73,39 @@ namespace BudgetApplication.Data.Migrations
 
             modelBuilder.Entity("BudgetApplication.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CategoryName");
 
                     b.Property<string>("UserID");
 
-                    b.HasKey("Id");
+                    b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("BudgetApplication.Models.Item", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ItemID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CategoryID");
 
                     b.Property<string>("ItemName");
 
-                    b.Property<int?>("SubcategoryId");
+                    b.Property<int>("SubcategoryID");
 
                     b.Property<string>("UserID");
 
-                    b.HasKey("Id");
+                    b.HasKey("ItemID");
 
-                    b.HasIndex("CategoryID");
-
-                    b.HasIndex("SubcategoryId");
+                    b.HasIndex("SubcategoryID");
 
                     b.ToTable("Items");
                 });
 
             modelBuilder.Entity("BudgetApplication.Models.Subcategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SubcategoryID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CategoryID");
@@ -118,7 +114,7 @@ namespace BudgetApplication.Data.Migrations
 
                     b.Property<string>("UserID");
 
-                    b.HasKey("Id");
+                    b.HasKey("SubcategoryID");
 
                     b.HasIndex("CategoryID");
 
@@ -127,7 +123,7 @@ namespace BudgetApplication.Data.Migrations
 
             modelBuilder.Entity("BudgetApplication.Models.Transaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<double>("ExchangeRate");
@@ -142,7 +138,7 @@ namespace BudgetApplication.Data.Migrations
 
                     b.Property<string>("UserID");
 
-                    b.HasKey("Id");
+                    b.HasKey("TransactionID");
 
                     b.HasIndex("ItemID");
 
@@ -259,14 +255,10 @@ namespace BudgetApplication.Data.Migrations
 
             modelBuilder.Entity("BudgetApplication.Models.Item", b =>
                 {
-                    b.HasOne("BudgetApplication.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BudgetApplication.Models.Subcategory")
+                    b.HasOne("BudgetApplication.Models.Subcategory", "Subcategory")
                         .WithMany("Items")
-                        .HasForeignKey("SubcategoryId");
+                        .HasForeignKey("SubcategoryID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BudgetApplication.Models.Subcategory", b =>

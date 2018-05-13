@@ -33,7 +33,10 @@ namespace BudgetApplication
 
             services.AddScoped<ApplicationDbInitializer>();
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<ISubcategoriesRepository, SubcategoriesRepository>();
+            services.AddTransient<ICategoriesRepository, CategoriesRepository>();
+            services.AddTransient<IItemsRepository, ItemsRepository>();
+            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddMvc();
         }
 

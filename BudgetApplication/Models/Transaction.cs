@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace BudgetApplication.Models
 {
-    public class Transaction :BaseEntity
+    public class Transaction
     {
-
+        [Key]
+        public int TransactionID { get; set; }
+        
         [Display(Name = "Item name")]
         public int ItemID { get; set; }
                

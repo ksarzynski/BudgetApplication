@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace BudgetApplication.Models
 {
-    public class Subcategory : BaseEntity
+    public class Subcategory
     {
+        [Key]
+        public int SubcategoryID { get; set; }
+
         [Display(Name = "Category name")]
         public int CategoryID { get; set; }
 

@@ -17,14 +17,14 @@
             @Html.DisplayFor(model => model.ItemName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.Subcategory)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
+            @Html.DisplayFor(model => model.Subcategory.CategoryName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ItemID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

@@ -3,40 +3,57 @@ using Microsoft.AspNetCore.Mvc;
 using BudgetApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using BudgetApplication.Repository;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace BudgetApplication.Controllers
 {
     [Authorize(Roles = "Administrator, User")]
     public class ItemsController : Controller
     {
-        private readonly IRepository<Item> _itemsRepository;
-        public ItemsController(IRepository<Item> context) => _itemsRepository = context;
+        private readonly IItemsRepository _itemsRepository;
+        private readonly ISubcategoriesRepository _subcategoriesRepository;
+
+        public ItemsController(IItemsRepository itemsRepository, ISubcategoriesRepository subcategoriesRepository)
+        {
+            _itemsRepository = itemsRepository;
+            _subcategoriesRepository = subcategoriesRepository ?? throw new System.ArgumentNullException(nameof(subcategoriesRepository));
+        }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_itemsRepository.GetAll().AsEnumerable());
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var items = await _itemsRepository.GetAllAsync();
+            return View(items.Where(x=> x.UserID == userId));
         }
 
-        // GET: Products/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var item = _itemsRepository.Get(id);
-            if (item == null) return NotFound();
-
-            return View(item);
+            var item = await _itemsRepository.Get(id);
+            if (item != null)
+            {
+                return View(item);
+            }
+            
+            return NotFound();
         }
-        public ActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id,ItemName")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,ItemName")] Item item)
         {
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
+                item.UserID = userId;
+                ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
                 _itemsRepository.Insert(item);
                 return RedirectToAction("Index");
             }
@@ -44,20 +61,20 @@ namespace BudgetApplication.Controllers
             return View(item);
         }
 
-        public ActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
-            Item item = _itemsRepository.Get(id);
-            if (id != item.Id)
+            Item item = await _itemsRepository.Get(id);
+            if (id != item.ItemID)
             {
                 return NotFound();
             }
+            ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
             return View(item);
         }
 
-        // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind("Id,ItemName")] Item item)
+        public async Task<IActionResult> Edit([Bind("Id,ItemName, UserID")] Item item)
         {
             if (item == null)
             {
@@ -66,20 +83,22 @@ namespace BudgetApplication.Controllers
 
             if (ModelState.IsValid)
             {
+                string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                item.UserID = userId;
+                ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
                 _itemsRepository.Update(item);
                 return RedirectToAction("Index");
             }
             return View(item);
         }
 
-        // POST: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            Item item = _itemsRepository.Get(id);
+            Item item = await _itemsRepository.Get(id);
             if (item == null)
             {
                 return BadRequest();
@@ -90,13 +109,13 @@ namespace BudgetApplication.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int? id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            Item item = _itemsRepository.Get(id);
+            Item item = await _itemsRepository.Get(id);
             if (item == null)
             {
                 return BadRequest();

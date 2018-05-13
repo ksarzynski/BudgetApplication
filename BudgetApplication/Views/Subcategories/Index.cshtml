@@ -9,12 +9,13 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Create</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.SubcategoryName)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubcategoryName)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
@@ -31,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-warning" style="height: 35px">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.Id"class="btn btn-success" style="height: 35px">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-danger" style="height: 35px">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.SubcategoryID"class="btn btn-warning" style="height: 35px">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.SubcategoryID"class="btn btn-success" style="height: 35px">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.SubcategoryID"class="btn btn-danger" style="height: 35px">Delete</a>
             </td>
         </tr>
 }

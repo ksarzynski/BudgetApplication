@@ -3,25 +3,28 @@ using Microsoft.AspNetCore.Mvc;
 using BudgetApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using BudgetApplication.Repository;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace BudgetApplication.Controllers
 {
     [Authorize(Roles = "Administrator, User")]
     public class CategoriesController : Controller
     {
-        private readonly IRepository<Category> _categoriesRepository;
-        public CategoriesController(IRepository<Category> context) => _categoriesRepository = context;
+        private readonly ICategoriesRepository _categoriesRepository;
+        public CategoriesController(ICategoriesRepository context) => _categoriesRepository = context;
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_categoriesRepository.GetAll().AsEnumerable());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var categories = await _categoriesRepository.GetAllForUserID(userId);
+            return View(categories);
         }
 
-        // GET: Products/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var product = _categoriesRepository.Get(id);
+            var product = await _categoriesRepository.Get(id);
             if (product == null) return NotFound();
 
             return View(product);
@@ -33,53 +36,67 @@ namespace BudgetApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id,CategoryName")] Category category)
+        public ActionResult Create([Bind("Id,CategoryName,UserID")] Category category)
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                category.UserID = userId;
+
                 _categoriesRepository.Insert(category);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(category);
         }
 
-        public ActionResult Edit(int? id)
+        // GET: Categories/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            Category category = _categoriesRepository.Get(id);
-            if (id != category.Id)
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _categoriesRepository.Get(id);
+            if (category == null)
             {
                 return NotFound();
             }
             return View(category);
         }
 
-        // POST: Products/Edit/5
+        // POST: Categories/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind("Id,CategoryName")] Category product)
+        public IActionResult Edit(int id, Category category)
         {
-            if (product == null)
-            {
-                return NotFound();
-            }
+            if (id != category.CategoryID) return NotFound();
 
             if (ModelState.IsValid)
             {
-                _categoriesRepository.Update(product);
-                return RedirectToAction("Index");
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var values = new Category
+                {
+                    CategoryID = category.CategoryID,
+                    CategoryName = category.CategoryName,
+                    UserID = userId
+                };
+                _categoriesRepository.Update(values);
+                return RedirectToAction(nameof(Index));
             }
-            return View(product);
+                
+            return View(category);
         }
 
         // POST: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            Category category = _categoriesRepository.Get(id);
+            Category category = await _categoriesRepository.Get(id);
             if (category == null)
             {
                 return BadRequest();
@@ -90,13 +107,13 @@ namespace BudgetApplication.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int? id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            Category category = _categoriesRepository.Get(id);
+            Category category = await _categoriesRepository.Get(id);
             if (category == null)
             {
                 return BadRequest();

@@ -1,4 +1,4 @@
-﻿@model BudgetApplication.Models.Tesseract;
+﻿@*//@model BudgetApplication.Models.Tesseract;*@
 @{
     ViewData["Title"] = "Budget Application";
 }
@@ -13,7 +13,8 @@
 </div>
 
 
-    <h2>Processed Image:</h2>
+    @*COMMENTED FOR FASTER LOADING OF APPLICATION
+        <h2>Processed Image:</h2>
     @{
         Tesseract tess = new Tesseract("IMG_1.jpg");
         string text = tess.getText();
@@ -27,4 +28,4 @@
                 <p> @item </p>
             </td>
         </tr>
-    }
+    }*@

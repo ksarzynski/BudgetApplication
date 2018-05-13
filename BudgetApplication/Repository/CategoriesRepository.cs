@@ -1,70 +1,88 @@
 ﻿using BudgetApplication.Data;
+using BudgetApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace BudgetApplication.Repository
 {
-
-    public interface IRepository<T>
+    public interface ICategoriesRepository
     {
-        IEnumerable<T> GetAll();
-        T Get(int? id);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        Task<IList<Category>> GetAll();
+        Task<IList<Category>> GetAllForUserID(string userID);
+        Task<Category> Get(int? id);
+        void Insert(Category model);
+        void Update(Category model);
+        void Delete(Category model);
+        bool CategoryExists(int id);
     }
 
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class CategoriesRepository : ICategoriesRepository
     {
-        private readonly ApplicationDbContext context;
-        private DbSet<T> entities;
+        private readonly ApplicationDbContext _context;
+        private DbSet<Category> _entity;
 
-        public Repository(ApplicationDbContext context)
+        public CategoriesRepository(ApplicationDbContext context)
         {
-            this.context = context;
-            entities = context.Set<T>();
-        }
-        public IEnumerable<T> GetAll()
-        {
-            return entities.AsEnumerable();
+            _context = context;
+            _entity = _context.Set<Category>();
         }
 
-        public T Get(int? id)
+        public async Task<IList<Category>> GetAll()
         {
-            return entities.SingleOrDefault(s => s.Id == id);
+            return await _context.Categories.ToListAsync(); 
         }
-        public void Insert(T entity)
+
+        public async Task<Category> Get(int? id)
         {
-            if (entity == null)
+            return await _entity.SingleOrDefaultAsync(s => s.CategoryID == id);
+        }
+
+        public async Task<IList<Category>> GetAllForUserID(string userID)
+        {
+            if (userID.Trim().Length == 0 || String.IsNullOrEmpty(userID)) throw new ArgumentException("User Id is null or empty");
+            var result = await _entity.Where(x => x.UserID == userID).ToListAsync();
+
+            return result;
+        }
+
+        public void Insert(Category entity)
+        {
+            if (entity != null)
+            {
+                _entity.Add(entity);
+                _context.SaveChanges();
+            }
+            else throw new ArgumentNullException("There was a problem with Entity.");
+        }
+
+        public void Update(Category entity)
+        {
+            if (entity != null)
+            {
+                _entity.Update(entity);
+                _context.SaveChanges();
+            }
+            else throw new ArgumentNullException("There was a problem with Entity.");            
+        }
+
+        public void Delete(Category entity)
+        {
+            if (entity != null && CategoryExists(entity.CategoryID))
+            {
+                _entity.Remove(entity);
+                _context.SaveChanges();   
+            }
+            else
             {
                 throw new ArgumentNullException("There was a problem with Entity.");
             }
-            entities.Add(entity);
-            context.SaveChanges();
         }
-
-        public void Update(T entity)
+        public bool CategoryExists(int id)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("There was a problem with Entity.");
-            }
-
-            entities.Update(entity);
-            context.SaveChanges();
-        }
-
-        public void Delete(T entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("There was a problem with Entity.");
-            }
-            entities.Remove(entity);
-            context.SaveChanges();
+            return _entity.Any(e => e.CategoryID == id);
         }
 
     }
