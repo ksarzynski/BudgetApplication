@@ -1,3 +1,2 @@
 ﻿# Aplikacja Budżetowa
 # Autorzy: 
-# x
