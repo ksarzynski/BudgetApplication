@@ -1,2 +1,2 @@
-# projekt2
+# Aplikacja Budżetowa
 # Autorzy:
