@@ -126,8 +126,6 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<double>("ExchangeRate");
-
                     b.Property<int>("ItemID");
 
                     b.Property<double>("Price");

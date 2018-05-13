@@ -78,7 +78,6 @@ namespace BudgetApplication.Controllers
                     Price = transaction.Price,
                     TransactionDate = transaction.TransactionDate,
                     TransactionPlace = transaction.TransactionPlace,
-                    ExchangeRate = transaction.ExchangeRate,
                     UserID = userId
                 };
                 _transactionsRepository.Insert(values);
@@ -131,7 +130,6 @@ namespace BudgetApplication.Controllers
                         Price = transaction.Price,
                         TransactionDate = transaction.TransactionDate,
                         TransactionPlace = transaction.TransactionPlace,
-                        ExchangeRate = transaction.ExchangeRate,
                         UserID = userId
                     };
                     _transactionsRepository.Update(values);
