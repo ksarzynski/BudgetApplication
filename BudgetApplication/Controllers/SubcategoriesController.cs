@@ -25,9 +25,9 @@ namespace BudgetApplication.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var subcategories = await _subcategoriesRepository.GetAllAsync();
+            var subcategories = await _subcategoriesRepository.GetAllForUserID(userId);
 
-            return View(subcategories.Where(x => x.UserID == userId));
+            return View(subcategories);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -39,7 +39,8 @@ namespace BudgetApplication.Controllers
         }
         public async Task<IActionResult> Create()
         {
-            ViewData["CategoryID"] = new SelectList(await _categoriesRepository.GetAll(), "CategoryID", "CategoryName");
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["CategoryID"] = new SelectList(await _categoriesRepository.GetAllForUserID(userId), "CategoryID", "CategoryName");
             return View();
         }
 
@@ -53,8 +54,8 @@ namespace BudgetApplication.Controllers
                 subcategory.UserID = userId;
 
                 _subcategoriesRepository.Insert(subcategory);
-                ViewData["CategoryID"] = new SelectList(await _categoriesRepository.GetAll(), "CategoryID", "CategoryName");
-                return RedirectToAction("Index");
+                ViewData["CategoryID"] = new SelectList(await _categoriesRepository.GetAllForUserID(userId), "CategoryID", "CategoryName", subcategory.CategoryID);
+                return RedirectToAction(nameof(Index));
             }
             return View(subcategory);
         }
@@ -137,7 +138,7 @@ namespace BudgetApplication.Controllers
                 return BadRequest();
             }
             _subcategoriesRepository.Delete(subcategory);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

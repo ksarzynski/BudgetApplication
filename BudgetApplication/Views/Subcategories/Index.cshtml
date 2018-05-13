@@ -23,20 +23,21 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubcategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SubcategoryID"class="btn btn-warning" style="height: 35px">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.SubcategoryID"class="btn btn-success" style="height: 35px">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.SubcategoryID"class="btn btn-danger" style="height: 35px">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubcategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SubcategoryID" class="btn btn-warning" style="height: 35px">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.SubcategoryID" class="btn btn-success" style="height: 35px">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.SubcategoryID" class="btn btn-danger" style="height: 35px">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,7 +1,9 @@
 ﻿using BudgetApplication.Data;
 using BudgetApplication.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BudgetApplication.Repository
@@ -9,10 +11,12 @@ namespace BudgetApplication.Repository
     public interface IItemsRepository
     {
         Task<IList<Item>> GetAllAsync();
+        Task<IList<Item>> GetAllForUserID(string userID);
         Task<Item> Get(int? id);
         void Insert(Item model);
         void Update(Item model);
         void Delete(Item model);
+        bool ItemExists(int id);
     }
     public class ItemsRepository : IItemsRepository
     {
@@ -29,6 +33,13 @@ namespace BudgetApplication.Repository
             var listOfItems = await _context.Items.Include(x => x.Subcategory).ToListAsync();
             return listOfItems;
         }
+        public async Task<IList<Item>> GetAllForUserID(string userID)
+        {
+            if (userID.Trim().Length == 0 || String.IsNullOrEmpty(userID)) throw new ArgumentException("User Id is null or empty");
+            var result = await _entity.Where(x => x.UserID == userID).ToListAsync();
+
+            return result;
+        }
 
         public async Task<Item> Get(int? id)
         {
@@ -40,7 +51,7 @@ namespace BudgetApplication.Repository
         {
             if (entity == null)
             {
-                throw new System.ArgumentNullException("There was a problem with subcategories entity.");
+                throw new System.ArgumentNullException("There was a problem with items entity.");
             }
             _entity.Add(entity);
             _context.SaveChanges();
@@ -55,7 +66,7 @@ namespace BudgetApplication.Repository
             }
             else
             {
-                throw new System.ArgumentNullException("There was a problem with subcategories entity.");
+                throw new System.ArgumentNullException("There was a problem with items entity.");
             }
 
         }
@@ -69,8 +80,12 @@ namespace BudgetApplication.Repository
             }
             else
             {
-                throw new System.ArgumentNullException("There was a problem with Entity.");
+                throw new System.ArgumentNullException("There was a problem with items Entity.");
             }
+        }
+        public bool ItemExists(int id)
+        {
+            return _entity.Any(e => e.ItemID == id);
         }
     }
 }

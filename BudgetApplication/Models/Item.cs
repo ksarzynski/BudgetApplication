@@ -1,9 +1,5 @@
-﻿using BudgetApplication.Repository;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BudgetApplication.Models
 {
@@ -22,7 +18,7 @@ namespace BudgetApplication.Models
 
         public Subcategory Subcategory { get; set; }
 
-        public ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
         
     }
 }

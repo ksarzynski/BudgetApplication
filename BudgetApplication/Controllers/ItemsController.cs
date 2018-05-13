@@ -18,7 +18,7 @@ namespace BudgetApplication.Controllers
         public ItemsController(IItemsRepository itemsRepository, ISubcategoriesRepository subcategoriesRepository)
         {
             _itemsRepository = itemsRepository;
-            _subcategoriesRepository = subcategoriesRepository ?? throw new System.ArgumentNullException(nameof(subcategoriesRepository));
+            _subcategoriesRepository = subcategoriesRepository;
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace BudgetApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ItemName")] Item item)
+        public async Task<IActionResult> Create([Bind("ItemID, SubcategoryID, ItemName")] Item item)
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
@@ -55,7 +55,7 @@ namespace BudgetApplication.Controllers
                 item.UserID = userId;
                 ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
                 _itemsRepository.Insert(item);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(item);
@@ -74,7 +74,7 @@ namespace BudgetApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("Id,ItemName, UserID")] Item item)
+        public async Task<IActionResult> Edit([Bind("ItemID, SubcategoryID, ItemName")] Item item)
         {
             if (item == null)
             {
@@ -87,7 +87,7 @@ namespace BudgetApplication.Controllers
                 item.UserID = userId;
                 ViewData["SubcategoryID"] = new SelectList(await _subcategoriesRepository.GetAllAsync(), "SubcategoryID", "SubcategoryName");
                 _itemsRepository.Update(item);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(item);
         }
