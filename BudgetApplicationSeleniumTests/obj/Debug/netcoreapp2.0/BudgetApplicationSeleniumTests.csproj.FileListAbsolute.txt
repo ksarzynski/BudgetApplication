@@ -1,0 +1,14 @@
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.deps.json
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.runtimeconfig.json
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.runtimeconfig.dev.json
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.dll
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\obj\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.csprojAssemblyReference.cache
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\obj\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.csproj.CoreCompileInputs.cache
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\obj\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.AssemblyInfoInputs.cache
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\obj\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.AssemblyInfo.cs
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\bin\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.pdb
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\obj\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.dll
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationSeleniumTests\obj\Debug\netcoreapp2.0\BudgetApplicationSeleniumTests.pdb

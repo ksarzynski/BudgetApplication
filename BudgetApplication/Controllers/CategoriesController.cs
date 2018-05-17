@@ -121,5 +121,12 @@ namespace BudgetApplication.Controllers
             _categoriesRepository.Delete(category);
             return RedirectToAction("Index");
         }
+
+        public bool CategoryExists(int id)
+        {
+            return _categoriesRepository.CategoryExists(id);
+        }
+
+       
     }
 }
