@@ -11,21 +11,3 @@
         <h2></h2>
     </div>
 </div>
-
-
-    @*COMMENTED FOR FASTER LOADING OF APPLICATION
-        <h2>Processed Image:</h2>
-    @{
-        Tesseract tess = new Tesseract("IMG_1.jpg");
-        string text = tess.getText();
-        IEnumerable<string> data = tess.seperateStringToArrayByWhiteSpaces(text);
-    }
-@text <br />
-    @foreach (var item in data)
-    {
-        <tr>
-            <td>
-                <p> @item </p>
-            </td>
-        </tr>
-    }*@
