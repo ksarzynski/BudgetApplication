@@ -8,6 +8,7 @@ using BudgetApplication.Data;
 using BudgetApplication.Models;
 using BudgetApplication.Services;
 using BudgetApplication.Repository;
+using Microsoft.AspNetCore.Localization;
 
 namespace BudgetApplication
 {
@@ -30,6 +31,11 @@ namespace BudgetApplication
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("en-US");
+            });
 
             services.AddScoped<ApplicationDbInitializer>();
             services.AddTransient<IEmailSender, EmailSender>();
@@ -60,6 +66,8 @@ namespace BudgetApplication
             app.UseAuthentication();
 
             dbInitializer.Seed();
+
+            app.UseRequestLocalization();
 
             app.UseMvc(routes =>
             {

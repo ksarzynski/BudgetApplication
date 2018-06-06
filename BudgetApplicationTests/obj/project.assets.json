@@ -13811,11 +13811,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplication-master\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
+      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication-scanner2\\BudgetApplication-scanner\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
       "projectName": "BudgetApplicationTests",
-      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplication-master\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
+      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-scanner2\\BudgetApplication-scanner\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
       "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplication-master\\BudgetApplicationTests\\obj\\",
+      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-scanner2\\BudgetApplication-scanner\\BudgetApplicationTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13834,8 +13834,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplication-master\\BudgetApplication\\BudgetApplication.csproj": {
-              "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplication-master\\BudgetApplication\\BudgetApplication.csproj"
+            "C:\\Users\\kamil\\Desktop\\BudgetApplication-scanner2\\BudgetApplication-scanner\\BudgetApplication\\BudgetApplication.csproj": {
+              "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-scanner2\\BudgetApplication-scanner\\BudgetApplication\\BudgetApplication.csproj"
             }
           }
         }
