@@ -13,9 +13,7 @@ namespace BudgetApplication.Models
                
         public string UserID { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "Price should not be a negative number")]
-        [DataType(DataType.Currency)]
-        [RegularExpression(@"[0-9]?[0-9]?(\.[0-9][0-9]?)?", ErrorMessage = "Please enter valid price format")]
+        [RegularExpression(@"[0-9]?[0-9]*(\.[0-9][0-9]?)?", ErrorMessage = "Please enter valid price format")]
         public double Price { get; set; }
         
         [Display(Name = "Transaction date")]
