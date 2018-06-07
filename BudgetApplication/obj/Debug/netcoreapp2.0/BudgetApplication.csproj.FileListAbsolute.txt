@@ -130,3 +130,4 @@ C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\Budget
 C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
 C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
