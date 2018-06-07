@@ -10,7 +10,12 @@
      {
          public string Data { get; private set; }
          public Tesseract(string fileName) { Data = ProcessImage(fileName); }
-
+        
+         public string getText()
+         {
+             return Data;
+         }
+         
          private string ProcessImage(string filename)
          {
              List<string> imageToText = new List<string>();
@@ -61,3 +66,4 @@
          }
      }
  }
+
