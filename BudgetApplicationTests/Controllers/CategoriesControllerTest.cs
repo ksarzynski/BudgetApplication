@@ -42,6 +42,31 @@ namespace BudgetApplicationTests.Controllers
             Assert.Equal(expectedName, model.CategoryName);
         }
 
+        [Fact]
+        public void CreateCategoryWithoutArguments()
+        {
+            var categoriesRepository = new FakeCategoriesRepository();
+            var controller = new CategoriesController(categoriesRepository);
+            var result = controller.Create();
+            var expected = typeof(ViewResult);
+
+            Assert.IsType(expected, result);
+        }
+
+        
+        //[Fact]
+        //public void Create_ValidUser_ReturnsRedirectToActionResult()
+        //{          
+
+        //    var category = new Category();            
+        //    var categoriesRepository = new FakeCategoriesRepository();
+        //    var controller = new CategoriesController(categoriesRepository);
+
+        //    var result = controller.Create(category);
+        //    var expected = typeof(RedirectToActionResult);
+
+        //    Assert.IsType(expected, result);
+        //}
 
 
     }

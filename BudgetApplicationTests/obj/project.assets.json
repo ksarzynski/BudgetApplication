@@ -13805,27 +13805,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DawidPC\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Penta6ram\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DawidPC\\Desktop\\Budget\\BudgetApplication\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
+      "projectUniqueName": "C:\\Users\\Penta6ram\\source\\repos\\BudgetApplication\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
       "projectName": "BudgetApplicationTests",
-      "projectPath": "C:\\Users\\DawidPC\\Desktop\\Budget\\BudgetApplication\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
-      "packagesPath": "C:\\Users\\DawidPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DawidPC\\Desktop\\Budget\\BudgetApplication\\BudgetApplicationTests\\obj\\",
+      "projectPath": "C:\\Users\\Penta6ram\\source\\repos\\BudgetApplication\\BudgetApplicationTests\\BudgetApplicationTests.csproj",
+      "packagesPath": "C:\\Users\\Penta6ram\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Penta6ram\\source\\repos\\BudgetApplication\\BudgetApplicationTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\DawidPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Penta6ram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13837,8 +13834,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\DawidPC\\Desktop\\Budget\\BudgetApplication\\BudgetApplication\\BudgetApplication.csproj": {
-              "projectPath": "C:\\Users\\DawidPC\\Desktop\\Budget\\BudgetApplication\\BudgetApplication\\BudgetApplication.csproj"
+            "C:\\Users\\Penta6ram\\source\\repos\\BudgetApplication\\BudgetApplication\\BudgetApplication.csproj": {
+              "projectPath": "C:\\Users\\Penta6ram\\source\\repos\\BudgetApplication\\BudgetApplication\\BudgetApplication.csproj"
             }
           }
         }
@@ -13891,7 +13888,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc 5.2.6' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "Pakiet „Microsoft.AspNet.Mvc 5.2.6” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "Microsoft.AspNet.Mvc",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.0"
@@ -13901,7 +13898,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Razor 3.2.6' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "Pakiet „Microsoft.AspNet.Razor 3.2.6” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "Microsoft.AspNet.Razor",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.0"
@@ -13911,7 +13908,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebPages 3.2.6' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "Pakiet „Microsoft.AspNet.WebPages 3.2.6” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "Microsoft.AspNet.WebPages",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.0"
@@ -13921,7 +13918,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "Pakiet „Microsoft.Web.Infrastructure 1.0.0” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "Microsoft.Web.Infrastructure",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.0"

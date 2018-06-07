@@ -10,13 +10,13 @@ namespace BudgetApplicationSeleniumTests
     {
         IWebDriver driver;
         private string pathToDebug = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.RelativeSearchPath ?? "");
-        private string baseURL = "http://localhost:49771/Account/Login";
+        private string baseURL = BasePath.Url + "Account/Login";
 
         [TestInitialize]
         public void SetUp()
         {
             driver = new ChromeDriver(pathToDebug);
-           
+
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace BudgetApplicationSeleniumTests
             driver.Quit();
 
         }
-      
+
 
         [TestMethod]
         public void LoginWithInvalidPassword()
@@ -47,7 +47,7 @@ namespace BudgetApplicationSeleniumTests
             emailField.SendKeys("admin@admin.com");
             passwordField.Click();
             passwordField.SendKeys("testtest");
-            driver.FindElement(By.XPath("/html/body/div/div/div[1]/section/form/div[5]/button")).Click(); 
+            driver.FindElement(By.XPath("/html/body/div/div/div[1]/section/form/div[5]/button")).Click();
 
             var error = driver.FindElement(By.XPath("/html/body/div/div/div[1]/section/form/div[1]/ul/li")).Text;
 
