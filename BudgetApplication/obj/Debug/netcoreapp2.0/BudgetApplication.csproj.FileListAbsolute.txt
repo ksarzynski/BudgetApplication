@@ -130,14 +130,3 @@ C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\Budget
 C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
 C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.deps.json
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.json
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.dev.json
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csproj.CoreCompileInputs.cache
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfoInputs.cache
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
-C:\Users\DawidPC\Desktop\Budget\BudgetApplication\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb

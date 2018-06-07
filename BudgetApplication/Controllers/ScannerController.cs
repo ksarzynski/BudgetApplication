@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BudgetApplication.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BudgetApplication.Controllers
 {
+    [Authorize(Roles = "Administrator, User")]
     public class ScannerController : Controller
     {
-
         private readonly IHostingEnvironment _environment;
 
         public ScannerController(IHostingEnvironment IHostingEnvironment)

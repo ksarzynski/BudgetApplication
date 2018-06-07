@@ -6,7 +6,6 @@ using BudgetApplication.Models;
 using BudgetApplication.Data;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
 
 namespace BudgetApplication.Controllers
 {
@@ -14,7 +13,6 @@ namespace BudgetApplication.Controllers
     public class LineChartController : Controller
     {
         private readonly ApplicationDbContext _context;
-
 
         public LineChartController(ApplicationDbContext context)
         {
@@ -26,25 +24,25 @@ namespace BudgetApplication.Controllers
             return View();
         }
 
-        private double GetUserTransactionsAsync(string userID, int month)
+        private double getSumOfPricesForGivenMonthForUser(string userID, int month)
         {
-            double transaction = _context.Transactions
-                                .Where(x => x.UserID == userID)
-                                .Where(x => x.TransactionDate.Month == month)
-                                .Sum(x => x.Price);
+            double sumForMonth = _context.Transactions
+                                .Where(transaction => transaction.UserID == userID)
+                                .Where(transaction => transaction.TransactionDate.Month == month)
+                                .Sum(transaction => transaction.Price);
 
-            return transaction;
+            return sumForMonth;
         }
 
-        private double[] GetMonthsResult(string currentLoggedInUser)
+        private double[] GetYearlySumForUser(string currentLoggedInUser)
         {
-            double[] listOfValues = new double[12];
+            double[] sumForYearResult = new double[12];
 
             for (int i=0; i<12; i++)
             {
-                listOfValues[i] = GetUserTransactionsAsync(currentLoggedInUser, i+1);
+                sumForYearResult[i] = getSumOfPricesForGivenMonthForUser(currentLoggedInUser, i+1);
             }
-            return listOfValues;
+            return sumForYearResult;
         }
 
         private string GetUserID()
@@ -56,19 +54,20 @@ namespace BudgetApplication.Controllers
         {
             Chart _chart = new Chart
             {
-                Labels = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December" },
+                Labels = new string[] { "January", "February", "March", "April", "May", "June", "July",
+                                        "August", "September", "October", "Novemeber", "December" },
                 Datasets = new List<Datasets>()
             };
 
             string currentLoggedInUser = GetUserID();
-            double[] yearsResult = GetMonthsResult(currentLoggedInUser);
+            double[] yearsResult = GetYearlySumForUser(currentLoggedInUser);
 
             List<Datasets> _dataSet = new List<Datasets>();
             _dataSet.Add(new Datasets()
             {
                 Label = $"Current Year: {DateTime.Now.Year}",
                 Data = yearsResult,
-                BorderColor = new string[] { "#800080" },
+                BorderColor = "#800080",
                 BorderWidth = "1"
             });
             _chart.Datasets = _dataSet;

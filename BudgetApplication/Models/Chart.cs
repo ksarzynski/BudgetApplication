@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BudgetApplication.Models
 {
@@ -13,9 +10,9 @@ namespace BudgetApplication.Models
     public class Datasets
     {
         public string Label { get; set; }
-        public string[] BackgroundColor { get; set; }
-        public string[] BorderColor { get; set; }
-        public string BorderWidth { get; set; }
         public double[] Data { get; set; }
+        public string BackgroundColor { get; set; }
+        public string BorderColor { get; set; }
+        public string BorderWidth { get; set; }
     }
 }
