@@ -76,7 +76,9 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CategoryName");
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<string>("UserID");
 
@@ -90,7 +92,9 @@ namespace BudgetApplication.Data.Migrations
                     b.Property<int>("ItemID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ItemName");
+                    b.Property<string>("ItemName")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<int>("SubcategoryID");
 
@@ -110,7 +114,9 @@ namespace BudgetApplication.Data.Migrations
 
                     b.Property<int>("CategoryID");
 
-                    b.Property<string>("SubcategoryName");
+                    b.Property<string>("SubcategoryName")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<string>("UserID");
 

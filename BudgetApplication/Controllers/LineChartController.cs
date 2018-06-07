@@ -55,8 +55,8 @@ namespace BudgetApplication.Controllers
         public JsonResult LineChartData()
         {
             Chart _chart = new Chart();
-            _chart.labels = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December" };
-            _chart.datasets = new List<Datasets>();
+            _chart.Labels = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December" };
+            _chart.Datasets = new List<Datasets>();
 
             string currentLoggedInUser = GetUserID();
             double[] yearsResult = GetMonthsResult(currentLoggedInUser);
@@ -64,12 +64,12 @@ namespace BudgetApplication.Controllers
             List<Datasets> _dataSet = new List<Datasets>();
             _dataSet.Add(new Datasets()
             {
-                label = "Current Year: "+DateTime.Now.Year,
-                data = yearsResult,
-                borderColor = new string[] { "#800080" },
-                borderWidth = "1"
+                Label = "Current Year: "+DateTime.Now.Year,
+                Data = yearsResult,
+                BorderColor = new string[] { "#800080" },
+                BorderWidth = "1"
             });
-            _chart.datasets = _dataSet;
+            _chart.Datasets = _dataSet;
             return Json(_chart);
         }
     }

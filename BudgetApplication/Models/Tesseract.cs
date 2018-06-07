@@ -11,8 +11,6 @@
          public string Data { get; private set; }
          public Tesseract(string fileName) { Data = ProcessImage(fileName); }
 
-
-
          public string getText()
          {
              return Data;

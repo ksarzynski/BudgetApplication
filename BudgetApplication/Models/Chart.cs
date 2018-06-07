@@ -7,15 +7,15 @@ namespace BudgetApplication.Models
 {
     public class Chart
     {
-        public string[] labels { get; set; }
-        public List<Datasets> datasets { get; set; }
+        public string[] Labels { get; set; }
+        public List<Datasets> Datasets { get; set; }
     }
     public class Datasets
     {
-        public string label { get; set; }
-        public string[] backgroundColor { get; set; }
-        public string[] borderColor { get; set; }
-        public string borderWidth { get; set; }
-        public double[] data { get; set; }
+        public string Label { get; set; }
+        public string[] BackgroundColor { get; set; }
+        public string[] BorderColor { get; set; }
+        public string BorderWidth { get; set; }
+        public double[] Data { get; set; }
     }
 }
