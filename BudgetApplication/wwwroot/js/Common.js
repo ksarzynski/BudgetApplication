@@ -6,7 +6,7 @@
             type: 'get', 
             contentType: "application/json; charset=utf-8", 
             dataType: "json", 
-            async: true, 
+            async: false, 
             success: function (data) { 
                 result = data; 
             } 

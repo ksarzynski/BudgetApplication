@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BudgetApplication.Models;
 using BudgetApplication.Data;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace BudgetApplication.Controllers
 {
@@ -27,12 +26,12 @@ namespace BudgetApplication.Controllers
             return View();
         }
 
-        private double GetUserTransactions(string userID, int month)
+        private double GetUserTransactionsAsync(string userID, int month)
         {
             double transaction = _context.Transactions
-               .Where(n => n.UserID == userID)
-               .Where(o => o.TransactionDate.Month == month)
-               .Sum(p => p.Price);
+                                .Where(x => x.UserID == userID)
+                                .Where(x => x.TransactionDate.Month == month)
+                                .Sum(x => x.Price);
 
             return transaction;
         }
@@ -40,9 +39,10 @@ namespace BudgetApplication.Controllers
         private double[] GetMonthsResult(string currentLoggedInUser)
         {
             double[] listOfValues = new double[12];
+
             for (int i=0; i<12; i++)
             {
-                listOfValues[i] = GetUserTransactions(currentLoggedInUser, i+1);
+                listOfValues[i] = GetUserTransactionsAsync(currentLoggedInUser, i+1);
             }
             return listOfValues;
         }
@@ -54,9 +54,11 @@ namespace BudgetApplication.Controllers
 
         public JsonResult LineChartData()
         {
-            Chart _chart = new Chart();
-            _chart.Labels = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December" };
-            _chart.Datasets = new List<Datasets>();
+            Chart _chart = new Chart
+            {
+                Labels = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December" },
+                Datasets = new List<Datasets>()
+            };
 
             string currentLoggedInUser = GetUserID();
             double[] yearsResult = GetMonthsResult(currentLoggedInUser);
@@ -64,7 +66,7 @@ namespace BudgetApplication.Controllers
             List<Datasets> _dataSet = new List<Datasets>();
             _dataSet.Add(new Datasets()
             {
-                Label = "Current Year: "+DateTime.Now.Year,
+                Label = $"Current Year: {DateTime.Now.Year}",
                 Data = yearsResult,
                 BorderColor = new string[] { "#800080" },
                 BorderWidth = "1"
