@@ -8,6 +8,7 @@ using BudgetApplication.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace BudgetApplication.Controllers
 {
@@ -53,9 +54,6 @@ namespace BudgetApplication.Controllers
                         // Combines two strings into a path.
                         fileName = Path.Combine(_environment.WebRootPath, "scans") + $@"\{newFileName}";
 
-                        // if you want to store path of folder in database
-                        PathDB = "scans/" + newFileName;
-
                         using (FileStream fs = System.IO.File.Create(fileName))
                         {
                             file.CopyTo(fs);
@@ -67,6 +65,10 @@ namespace BudgetApplication.Controllers
             }
             Tesseract tess = new Tesseract(fileName);
             string text = tess.getText();
+            Regex word = new Regex(@"(SUMA|SUMA PLN|Suma PLN).*?([0-9,]+)");
+            Match m = word.Match(text);
+            string sum = m.Value;
+            ViewBag.Sum = sum;
             ViewBag.Message = text;
             System.IO.File.Delete(fileName);
             return View();

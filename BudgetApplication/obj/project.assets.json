@@ -13122,11 +13122,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication-master\\BudgetApplication-master\\BudgetApplication\\BudgetApplication.csproj",
+      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication-masters\\BudgetApplication-master\\BudgetApplication\\BudgetApplication.csproj",
       "projectName": "BudgetApplication",
-      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-master\\BudgetApplication-master\\BudgetApplication\\BudgetApplication.csproj",
+      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-masters\\BudgetApplication-master\\BudgetApplication\\BudgetApplication.csproj",
       "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-master\\BudgetApplication-master\\BudgetApplication\\obj\\",
+      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-masters\\BudgetApplication-master\\BudgetApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

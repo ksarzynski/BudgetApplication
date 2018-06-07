@@ -5679,11 +5679,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication-master\\BudgetApplication-master\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
+      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication-masters\\BudgetApplication-master\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
       "projectName": "BudgetApplicationSeleniumTests",
-      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-master\\BudgetApplication-master\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
+      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-masters\\BudgetApplication-master\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
       "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-master\\BudgetApplication-master\\BudgetApplicationSeleniumTests\\obj\\",
+      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication-masters\\BudgetApplication-master\\BudgetApplicationSeleniumTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

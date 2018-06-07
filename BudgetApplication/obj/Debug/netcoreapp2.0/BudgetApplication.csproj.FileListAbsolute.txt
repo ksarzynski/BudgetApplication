@@ -118,3 +118,15 @@ C:\Users\kamil\Desktop\BudgetApplication-master\BudgetApplication-master\BudgetA
 C:\Users\kamil\Desktop\BudgetApplication-master\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
 C:\Users\kamil\Desktop\BudgetApplication-master\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\kamil\Desktop\BudgetApplication-master\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.deps.json
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.json
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.runtimeconfig.dev.json
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csprojAssemblyReference.cache
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.csproj.CoreCompileInputs.cache
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfoInputs.cache
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.AssemblyInfo.cs
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.dll
+C:\Users\kamil\Desktop\BudgetApplication-masters\BudgetApplication-master\BudgetApplication\obj\Debug\netcoreapp2.0\BudgetApplication.pdb
