@@ -5,6 +5,7 @@ C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Deb
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplicationTests.runtimeconfig.json
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplicationTests.runtimeconfig.dev.json
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplicationTests.dll
+C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplicationTests.pdb
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplication.dll
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplication.pdb
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Debug\netcoreapp2.0\BudgetApplicationTests.csprojAssemblyReference.cache
@@ -12,6 +13,5 @@ C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Deb
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Debug\netcoreapp2.0\BudgetApplicationTests.AssemblyInfoInputs.cache
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Debug\netcoreapp2.0\BudgetApplicationTests.AssemblyInfo.cs
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Debug\netcoreapp2.0\BudgetApplicationTests.csproj.CopyComplete
-C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\bin\Debug\netcoreapp2.0\BudgetApplicationTests.pdb
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Debug\netcoreapp2.0\BudgetApplicationTests.dll
 C:\Users\Penta6ram\source\repos\BudgetApplication\BudgetApplicationTests\obj\Debug\netcoreapp2.0\BudgetApplicationTests.pdb

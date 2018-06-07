@@ -9,15 +9,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BudgetApplicationTests.Models
 {
-    public class CategoryTest
+    public class ItemTest
     {
         [Fact]
-        public void GivenModelCategoryNameShouldValidate()
+        public void GivenModelItemNameShouldValidate()
         {
 
-            var model = new Category
+            var model = new Item
             {
-                CategoryName = "Category"
+                ItemName = "Item"
             };
 
             var context = new ValidationContext(model, null, null);
@@ -29,13 +29,14 @@ namespace BudgetApplicationTests.Models
             Assert.True(valid);
         }
 
+
         [Fact]
-        public void GivenModelCategoryWithNullNameShouldNotValidate()
+        public void GivenModelItemWithNullNameShouldNotValidate()
         {
 
-            var model = new Category
+            var model = new Item
             {
-                CategoryName = ""
+                ItemName = ""
             };
 
             var context = new ValidationContext(model, null, null);
@@ -48,12 +49,12 @@ namespace BudgetApplicationTests.Models
         }
 
         [Fact]
-        public void GivenModelCategoryWithTooLongNameShouldNotValidate()
+        public void GivenModelItemWithTooLongNameShouldNotValidate()
         {
 
-            var model = new Category
+            var model = new Item
             {
-                CategoryName = "Testtesttesttesttesttesttesttest"
+                ItemName = "Testtesttesttesttesttesttesttest"
             };
 
             var context = new ValidationContext(model, null, null);
@@ -66,12 +67,12 @@ namespace BudgetApplicationTests.Models
         }
 
         [Fact]
-        public void GivenModelCategoryWithTooShortNameShouldNotValidate()
+        public void GivenModelItemWithTooShortNameShouldNotValidate()
         {
 
-            var model = new Category
+            var model = new Item
             {
-                CategoryName = "Te"
+                ItemName = "Te"
             };
 
             var context = new ValidationContext(model, null, null);
@@ -82,7 +83,5 @@ namespace BudgetApplicationTests.Models
 
             Assert.False(valid);
         }
-
-
     }
 }
