@@ -6,17 +6,17 @@ using System;
 namespace BudgetApplicationSeleniumTests
 {
     [TestClass]
-    public class RegisterTests
+    public class RegisterTest
     {
 
         IWebDriver driver;
         private string pathToDebug = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.RelativeSearchPath ?? "");
-        private string baseURL = "http://localhost:49771/Account/Register";
+        private string baseURL = BasePath.Url + "Account/Register";
 
         [TestInitialize]
         public void SetUp()
         {
-            driver = new ChromeDriver(pathToDebug);      
+            driver = new ChromeDriver(pathToDebug);
 
         }
 
@@ -34,7 +34,7 @@ namespace BudgetApplicationSeleniumTests
 
             StringAssert.Contains(error, "The Email field is not a valid e-mail address.");
             driver.Quit();
-            
+
         }
 
         [TestMethod]
@@ -144,6 +144,7 @@ namespace BudgetApplicationSeleniumTests
         public void RegisterWithCorrectEmailAndPassword()
         {
 
+            string email = "Test333@example.com";
             driver.Navigate().GoToUrl(baseURL);
 
             var emailField = driver.FindElement(By.Id("Email"));
@@ -151,20 +152,20 @@ namespace BudgetApplicationSeleniumTests
             var confPasswordField = driver.FindElement(By.Id("ConfirmPassword"));
 
             emailField.Click();
-            emailField.SendKeys("test1@example.com");
+            emailField.SendKeys(email);
 
             passwordField.Click();
-            passwordField.SendKeys("Test123$");
+            passwordField.SendKeys("Test124$");
 
             confPasswordField.Click();
-            confPasswordField.SendKeys("Test123$");
+            confPasswordField.SendKeys("Test124$");
 
             var registerButton = driver.FindElement(By.XPath("/html/body/div/div/div/form/button"));
             registerButton.Click();
 
-            var user = driver.FindElement(By.LinkText("Hello test1@example.com!")).Text;
+            var user = driver.FindElement(By.LinkText("Hello " + email + "!")).Text;
 
-            StringAssert.Contains(user, "Hello test1@example.com!");
+            StringAssert.Contains(user, "Hello " + email + "!");
             driver.Quit();
 
         }
