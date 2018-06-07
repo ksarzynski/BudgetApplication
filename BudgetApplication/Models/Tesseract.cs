@@ -18,9 +18,8 @@
          
          private string ProcessImage(string filename)
          {
-             List<string> imageToText = new List<string>();
-             var solutionDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
-             var tesseractPath = solutionDirectory + @"\tesseract-master.1671";
+             var solutionPath = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+             var tesseractPath = solutionPath + @"\tesseract-master.1671";
              var image = File.ReadAllBytes(filename);
              string text = ParseText(tesseractPath, image);
              return text;
@@ -29,28 +28,27 @@
          private static string ParseText(string tesseractPath, byte[] imageFile)
          {
              string output = string.Empty;
-             var tempOutputFile = Path.GetTempPath() + Guid.NewGuid();
-             var tempImageFile = Path.GetTempFileName();
+             var tempOutput = Path.GetTempPath() + Guid.NewGuid();
+             var tempImage = Path.GetTempFileName();
 
             try
              {
-                 File.WriteAllBytes(tempImageFile, imageFile);
+                 File.WriteAllBytes(tempImage, imageFile);
 
-            ProcessStartInfo info = new ProcessStartInfo();
+                 ProcessStartInfo info = new ProcessStartInfo();
                  info.WorkingDirectory = tesseractPath;
-                 info.WindowStyle = ProcessWindowStyle.Hidden;
                  info.UseShellExecute = false;
                  info.FileName = "cmd.exe";
                  info.Arguments =
                      "/c tesseract.exe " +
-                    tempImageFile + " " +
-                     tempOutputFile +
+                    tempImage + " " +
+                     tempOutput +
                      " -l " + string.Join("+", "pol");
                  Process process = Process.Start(info);
                  process.WaitForExit();
                  if (process.ExitCode == 0)
                  {
-                    output = File.ReadAllText(tempOutputFile + ".txt");
+                    output = File.ReadAllText(tempOutput + ".txt");
                  }
                  else
                  {
@@ -59,11 +57,10 @@
              }
              finally
              {
-                 File.Delete(tempImageFile);
-                 File.Delete(tempOutputFile + ".txt");
+                 File.Delete(tempImage);
+                 File.Delete(tempOutput + ".txt");
              }
              return output;
          }
      }
  }
-
