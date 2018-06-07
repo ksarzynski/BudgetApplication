@@ -68,6 +68,7 @@ namespace BudgetApplication.Controllers
             Tesseract tess = new Tesseract(fileName);
             string text = tess.getText();
             ViewBag.Message = text;
+            System.IO.File.Delete(fileName);
             return View();
         }
 
