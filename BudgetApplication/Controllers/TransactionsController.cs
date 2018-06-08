@@ -26,14 +26,12 @@ namespace BudgetApplication.Controllers
         private readonly IHostingEnvironment _environment;
 
 
-        public TransactionsController(ITransactionsRepository transactionsRepository, IItemsRepository itemsRepository, IHostingEnvironment IHostingEnvironment)
+        public TransactionsController(ITransactionsRepository transactionsRepository, IItemsRepository itemsRepository)
         {
             _transactionsRepository = transactionsRepository;
             _itemsRepository = itemsRepository;
-            _environment = IHostingEnvironment;
         }
 
-        // GET: Transactions
         public async Task<IActionResult> Index()
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -41,7 +39,6 @@ namespace BudgetApplication.Controllers
             return View(items.Where(x => x.UserID == userId));
         }
 
-        // GET: Transactions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -58,7 +55,6 @@ namespace BudgetApplication.Controllers
             return View(transaction);
         }
 
-        // GET: Transactions/Create
         public async Task<IActionResult> Create(string value)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -67,9 +63,6 @@ namespace BudgetApplication.Controllers
             return View();
         }
 
-        // POST: Transactions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Transaction transaction)
@@ -95,7 +88,6 @@ namespace BudgetApplication.Controllers
             return View(transaction);
         }
 
-        // GET: Transactions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -112,10 +104,7 @@ namespace BudgetApplication.Controllers
             ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
-
-        // POST: Transactions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Transaction transaction)
@@ -185,62 +174,5 @@ namespace BudgetApplication.Controllers
             _transactionsRepository.Delete(transaction);
             return RedirectToAction(nameof(Index));
         }
-        /*
-        [HttpPost]
-        public IActionResult Index(string name)
-        {
-            var newFileName = string.Empty;
-            var fileName = string.Empty;
-
-            if (HttpContext.Request.Form.Files != null)
-            {
-                //   var fileName = string.Empty;
-                string PathDB = string.Empty;
-
-                var files = HttpContext.Request.Form.Files;
-
-                foreach (var file in files)
-                {
-                    if (file.Length > 0)
-                    {
-                        //Getting FileName
-                        fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-
-                        //Assigning Unique Filename (Guid)
-                        var myUniqueFileName = Convert.ToString(Guid.NewGuid());
-
-                        //Getting file Extension
-                        var FileExtension = Path.GetExtension(fileName);
-
-                        // concating  FileName + FileExtension
-                        newFileName = myUniqueFileName + FileExtension;
-
-                        // Combines two strings into a path.
-                        fileName = Path.Combine(_environment.WebRootPath, "scans") + $@"\{newFileName}";
-
-                        using (FileStream fs = System.IO.File.Create(fileName))
-                        {
-                            file.CopyTo(fs);
-                            fs.Flush();
-                        }
-
-                    }
-                }
-            }
-            Tesseract tess = new Tesseract(fileName);
-            string text = tess.getText();
-            Regex word = new Regex(@"(SUMA|SUMA PLN|Suma PLN).*?([0-9,]+)");
-            Match m = word.Match(text);
-            string sum = m.Value;
-            ViewBag.Sum = sum;
-            ViewBag.Message = text;
-            System.IO.File.Delete(fileName);
-            return PartialView("~/views/Transactions/Scanner.cshtml");
-        }
-
-      */
-
-
-
     }
 }

@@ -57,7 +57,6 @@ namespace BudgetApplication.Controllers
             string output = sum.Replace(",",".");
             ViewBag.Sum = output;
             System.IO.File.Delete(fileName);
-            //  return View("~/Views/Transactions/Create.cshtml");
             return RedirectToAction("Create", "Transactions", new { @value = output });
 
         }

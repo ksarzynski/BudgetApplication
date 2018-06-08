@@ -50,7 +50,6 @@ namespace BudgetApplication.Controllers
             return View(category);
         }
 
-        // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -66,7 +65,7 @@ namespace BudgetApplication.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Category category)
@@ -89,7 +88,6 @@ namespace BudgetApplication.Controllers
             return View(category);
         }
 
-        // POST: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -103,8 +101,7 @@ namespace BudgetApplication.Controllers
             }
             return View(category);
         }
-
-
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
@@ -126,7 +123,6 @@ namespace BudgetApplication.Controllers
         {
             return _categoriesRepository.CategoryExists(id);
         }
-
-       
+               
     }
 }
