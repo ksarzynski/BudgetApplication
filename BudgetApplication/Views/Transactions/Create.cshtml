@@ -1,11 +1,8 @@
 ﻿@model BudgetApplication.Models.Transaction
-
 @{
     ViewData["Title"] = "Create";
 }
-
 <h2>Create</h2>
-
 <h4>Transaction</h4>
 <hr />
 <div class="row">
@@ -14,11 +11,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ItemID" class="control-label"></label>
-                <select asp-for="ItemID" class ="form-control" asp-items="ViewBag.ItemID"></select>
+                <select asp-for="ItemID" class="form-control" asp-items="ViewBag.ItemID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control" value=@ViewBag.Sum />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,11 +34,12 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div>
+    @Html.Partial("~/Views/Transactions/Scanner.cshtml") 
+</div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

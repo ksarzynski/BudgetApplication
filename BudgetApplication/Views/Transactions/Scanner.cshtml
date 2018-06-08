@@ -1,8 +1,4 @@
-﻿@model BudgetApplication.Models.Tesseract;
-@{
-    ViewData["Title"] = "Budget Application";
-}
-
+﻿
 <form method="post" enctype="multipart/form-data" asp-controller="Scanner" asp-action="Index">
     <div class="form-group">
         <div class="col-md-10">
@@ -16,11 +12,3 @@
         </div>
     </div>
 </form>
-<br /> <br /><br /><br /><br />
-<div class="w3-container">
-    @ViewBag.Message
-</div>
-<br />
-<div class="w3-container">
-   @ViewBag.Sum
-</div>
