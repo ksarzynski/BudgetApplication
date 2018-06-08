@@ -55,7 +55,6 @@ namespace BudgetApplication.Controllers
             Match match = r.Match(text);
             string sum = match.Groups[1].ToString();
             string output = sum.Replace(",",".");
-            ViewBag.Sum = output;
             System.IO.File.Delete(fileName);
             return RedirectToAction("Create", "Transactions", new { @value = output });
 

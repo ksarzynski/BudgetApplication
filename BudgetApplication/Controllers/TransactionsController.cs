@@ -30,7 +30,7 @@ namespace BudgetApplication.Controllers
             _itemsRepository = itemsRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var items = await _transactionsRepository.GetAllAsync();
@@ -145,8 +145,7 @@ namespace BudgetApplication.Controllers
             ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId2), "ItemID", "ItemName", transaction.ItemID);
             return View(transaction);
         }
-
-        // GET: Transactions/Delete/5
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
