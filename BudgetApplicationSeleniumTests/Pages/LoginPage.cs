@@ -6,7 +6,7 @@ namespace BudgetApplicationSeleniumTests.Pages
     class LoginPage
     {
         private static IWebDriver _driver;
-
+        
         public LoginPage(IWebDriver driver) => _driver = driver;
 
         [CacheLookup]
@@ -16,7 +16,9 @@ namespace BudgetApplicationSeleniumTests.Pages
         public IWebElement Password => _driver.FindElement(By.Id("Password"));
 
         [CacheLookup]
-        public IWebElement EmailError => _driver.FindElement(By.XPath("*//div[1]/ul/li"));
+        public IWebElement PasswordError => _driver.FindElement(By.XPath("*//div[1]/ul/li"));
+        [CacheLookup]
+        public IWebElement EmailError => _driver.FindElement(By.Id("Email-error"));
 
         [CacheLookup]
         public IWebElement LoginButton => _driver.FindElement(By.XPath("*//div[1]/section/form/div[5]/button"));
@@ -26,6 +28,8 @@ namespace BudgetApplicationSeleniumTests.Pages
             element.Click();
             element.SendKeys(textToSend);
         }
+
+        public string GetPasswordErrorText() => PasswordError.Text;
 
         public string GetEmailErrorText() => EmailError.Text;
 
