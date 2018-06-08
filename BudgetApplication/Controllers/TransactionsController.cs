@@ -30,7 +30,7 @@ namespace BudgetApplication.Controllers
             _itemsRepository = itemsRepository;
         }
 
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index()
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var items = await _transactionsRepository.GetAllAsync();
