@@ -59,10 +59,11 @@ namespace BudgetApplication.Controllers
         }
 
         // GET: Transactions/Create
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(string value)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewData["ItemID"] = new SelectList(await _itemsRepository.GetAllForUserID(userId), "ItemID", "ItemName");
+            ViewBag.sum = value;
             return View();
         }
 
