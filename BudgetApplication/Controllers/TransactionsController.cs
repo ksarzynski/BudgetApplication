@@ -23,8 +23,6 @@ namespace BudgetApplication.Controllers
     {
         private readonly ITransactionsRepository _transactionsRepository;
         private readonly IItemsRepository _itemsRepository;
-        private readonly IHostingEnvironment _environment;
-
 
         public TransactionsController(ITransactionsRepository transactionsRepository, IItemsRepository itemsRepository)
         {
