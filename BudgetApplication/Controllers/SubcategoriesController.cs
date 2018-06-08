@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApplication.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize(Roles = "User")]
     public class SubcategoriesController : Controller
     {
         private readonly ISubcategoriesRepository _subcategoriesRepository;

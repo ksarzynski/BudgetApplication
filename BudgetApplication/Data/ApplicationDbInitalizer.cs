@@ -27,7 +27,6 @@ namespace BudgetApplication.Data
             {
                 var roleNames = new[]
                 {
-                    Roles.Roles.Administrator,
                     Roles.Roles.User,
 
                 };
@@ -42,12 +41,12 @@ namespace BudgetApplication.Data
 
             if (!_context.ApplicationUsers.Any())
             {
-                const string userName = "admin@admin.com";                                   
+                const string userName = "user@user.com";                                   
                 const string userPass = "p@sw1ooorD";
 
                 var user = new ApplicationUser { UserName = userName, Email = userName };
                 _userManager.CreateAsync(user, userPass).Wait();
-                _userManager.AddToRoleAsync(user, Roles.Roles.Administrator).Wait();
+                _userManager.AddToRoleAsync(user, Roles.Roles.User).Wait();
                              
 
             }

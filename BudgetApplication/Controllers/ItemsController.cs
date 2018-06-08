@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace BudgetApplication.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize(Roles = "User")]
     public class ItemsController : Controller
     {
         private readonly IItemsRepository _itemsRepository;

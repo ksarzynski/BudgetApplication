@@ -8,7 +8,7 @@ using System.Security.Claims;
 
 namespace BudgetApplication.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize(Roles = "User")]
     public class CategoriesController : Controller
     {
         private readonly ICategoriesRepository _categoriesRepository;

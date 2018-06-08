@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BudgetApplication.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize(Roles = "User")]
     public class LineChartController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BudgetApplication.Controllers
 {
-
+    [Authorize(Roles = "User")]
     public class ScannerController : Controller
     {
         private readonly IHostingEnvironment _environment;

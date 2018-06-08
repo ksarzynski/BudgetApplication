@@ -18,7 +18,7 @@ using System.Text.RegularExpressions;
 
 namespace BudgetApplication.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize(Roles = "User")]
     public class TransactionsController : Controller
     {
         private readonly ITransactionsRepository _transactionsRepository;
