@@ -34,7 +34,6 @@ namespace BudgetApplication.Models
             try
             {
                 File.WriteAllBytes(tempImage, imageFile);
-
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.WorkingDirectory = tesseractPath;
                 info.UseShellExecute = false;

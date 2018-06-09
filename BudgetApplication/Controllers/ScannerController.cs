@@ -57,8 +57,7 @@ namespace BudgetApplication.Controllers
             string output = sum.Replace(",",".");
             System.IO.File.Delete(fileName);
             return RedirectToAction("Create", "Transactions", new { @value = output });
-
-        }
+          }
             
     }
 }

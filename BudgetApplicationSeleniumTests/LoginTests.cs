@@ -41,7 +41,7 @@ namespace BudgetApplicationSeleniumTests
         [TestMethod]
         public void LoginWithInvalidPassword()
         {
-            loginPage.SendTextToField(loginPage.Email, "admin@admin.com");
+            loginPage.SendTextToField(loginPage.Email, "user@user.com");
             loginPage.SendTextToField(loginPage.Password, "testtest");
             loginPage.LoginButton.Click();
 
@@ -56,12 +56,12 @@ namespace BudgetApplicationSeleniumTests
         public void LoginWithCorrectEmailAndPasswordAsAdmin()
         {
 
-            loginPage.SendTextToField(loginPage.Email, "admin@admin.com");
+            loginPage.SendTextToField(loginPage.Email, "user@user.com");
             loginPage.SendTextToField(loginPage.Password, "p@sw1ooorD");
             loginPage.LoginButton.Click();
 
-            var admin = loginPage.FindElementByLinkText("Hello admin@admin.com!");
-            StringAssert.Contains(admin, "Hello admin@admin.com!");
+            var admin = loginPage.FindElementByLinkText("Hello user@user.com!");
+            StringAssert.Contains(admin, "Hello user@user.com!");
             
 
         }

@@ -121,7 +121,7 @@ namespace BudgetApplicationSeleniumTests
             var confPasswordField = driver.FindElement(By.Id("ConfirmPassword"));
 
             emailField.Click();
-            emailField.SendKeys("admin@admin.com");
+            emailField.SendKeys("user@user.com");
 
             passwordField.Click();
             passwordField.SendKeys("Test123$");
@@ -134,7 +134,7 @@ namespace BudgetApplicationSeleniumTests
 
             var error = driver.FindElement(By.XPath("/html/body/div/div/div/form/div[1]/ul/li")).Text;
 
-            StringAssert.Contains(error, "User name 'admin@admin.com' is already taken.");
+            StringAssert.Contains(error, "User name 'user@user.com' is already taken.");
             driver.Quit();
         }
 

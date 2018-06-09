@@ -21,7 +21,7 @@ namespace BudgetApplicationSeleniumTests
             driver.Manage().Window.Maximize();
             var email = driver.FindElement(By.Id("Email"));
             email.Click();
-            email.SendKeys("admin@admin.com");
+            email.SendKeys("user@user.com");
             var pass = driver.FindElement(By.Id("Password"));
             pass.Click();
             pass.SendKeys("p@sw1ooorD\n");
