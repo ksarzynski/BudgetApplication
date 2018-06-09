@@ -2,7 +2,6 @@
 using BudgetApplication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using BudgetApplication.Data;
 
 namespace BudgetApplication.Data
 {

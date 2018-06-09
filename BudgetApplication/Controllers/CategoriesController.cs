@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using BudgetApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using BudgetApplication.Repository;

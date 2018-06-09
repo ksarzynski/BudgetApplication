@@ -1,12 +1,11 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 using Microsoft.AspNetCore.Mvc;
 using BudgetApplication.Controllers;
 using BudgetApplication.Repository;
 using BudgetApplication.Models;
 using System.Threading.Tasks;
 using Moq;
-using System.Collections.Generic;
+using BudgetApplicationTests.Repository;
 
 namespace BudgetApplicationTests.Controllers
 {

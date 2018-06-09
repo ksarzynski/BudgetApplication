@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BudgetApplication.Models;
+using BudgetApplication.Repository;
 
-namespace BudgetApplication.Repository
+namespace BudgetApplicationTests.Repository
 {
     public class FakeCategoriesRepository : ICategoriesRepository
     {

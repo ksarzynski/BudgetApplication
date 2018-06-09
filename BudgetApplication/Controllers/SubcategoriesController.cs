@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApplication.Controllers
 {

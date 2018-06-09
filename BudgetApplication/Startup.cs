@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BudgetApplication.Data;
 using BudgetApplication.Models;
-using BudgetApplication.Services;
 using BudgetApplication.Repository;
 using Microsoft.AspNetCore.Localization;
 
@@ -38,7 +37,6 @@ namespace BudgetApplication
             });
 
             services.AddScoped<ApplicationDbInitializer>();
-            services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ISubcategoriesRepository, SubcategoriesRepository>();
             services.AddTransient<ICategoriesRepository, CategoriesRepository>();
             services.AddTransient<IItemsRepository, ItemsRepository>();

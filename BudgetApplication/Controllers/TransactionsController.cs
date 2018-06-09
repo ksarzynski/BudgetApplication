@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BudgetApplication.Data;
 using BudgetApplication.Models;
 using System.Security.Claims;
-using BudgetApplication.Roles;
 using Microsoft.AspNetCore.Authorization;
 using BudgetApplication.Repository;
-using System.Net.Http.Headers;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using System.Text.RegularExpressions;
 
 namespace BudgetApplication.Controllers
 {
