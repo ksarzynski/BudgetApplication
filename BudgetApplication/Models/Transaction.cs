@@ -17,10 +17,11 @@ namespace BudgetApplication.Models
         public double Price { get; set; }
         
         [Display(Name = "Transaction date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd H:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime TransactionDate { get; set; }
 
         [Display(Name = "Transaction place")]
+        [StringLength(maximumLength: 30, ErrorMessage = "Please use maximum 30 characters")]
         public string TransactionPlace { get; set; }
 
         public Item Item { get; set; }

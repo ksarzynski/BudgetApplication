@@ -5673,27 +5673,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DawidPC\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\kamil\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DawidPC\\Desktop\\Budget_2\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
+      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
       "projectName": "BudgetApplicationSeleniumTests",
-      "projectPath": "C:\\Users\\DawidPC\\Desktop\\Budget_2\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
-      "packagesPath": "C:\\Users\\DawidPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DawidPC\\Desktop\\Budget_2\\BudgetApplication\\BudgetApplicationSeleniumTests\\obj\\",
+      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
+      "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplicationSeleniumTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\DawidPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
