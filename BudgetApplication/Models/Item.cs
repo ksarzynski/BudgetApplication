@@ -12,11 +12,9 @@ namespace BudgetApplication.Models
         [Display(Name = "Subcategory name")]
         public int SubcategoryID { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [Display(Name = "Item name")]
         [Capitalize]
         [StringLength(maximumLength: 30, MinimumLength = 3, ErrorMessage = "Please use name of length in range 3..30")]
-        [Display(Name = "Item name")]
         public string ItemName { get; set; }
 
         public string UserID { get; set; }
