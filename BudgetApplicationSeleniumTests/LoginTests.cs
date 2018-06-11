@@ -32,8 +32,7 @@ namespace BudgetApplicationSeleniumTests
 
             var error = loginPage.GetEmailErrorText();
 
-            StringAssert.Contains(error, "The Email field is not a valid e-mail address.");
-            
+            StringAssert.Contains(error, "The Email field is not a valid e-mail address.");            
 
         }
 
@@ -53,7 +52,7 @@ namespace BudgetApplicationSeleniumTests
 
 
         [TestMethod]
-        public void LoginWithCorrectEmailAndPasswordAsAdmin()
+        public void LoginWithCorrectEmailAndPassword()
         {
 
             loginPage.SendTextToField(loginPage.Email, "user@user.com");

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using BudgetApplicationSeleniumTests.Pages;
 using System;
 using System.Collections.ObjectModel;
 
@@ -9,22 +10,21 @@ namespace BudgetApplicationSeleniumTests
     [TestClass]
     public class CategoryTest
     {
-        IWebDriver driver;
+        public static IWebDriver driver;
         private string pathToDebug = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.RelativeSearchPath ?? "");
         private string baseURL = BasePath.Url + "Categories";
+        private LoginPage loginPage = null;
 
         [TestInitialize]
         public void SetUp()
         {
             driver = new ChromeDriver(pathToDebug);
+            loginPage = new LoginPage(driver);
             driver.Navigate().GoToUrl(BasePath.Url + "Account/Login");
             driver.Manage().Window.Maximize();
-            var email = driver.FindElement(By.Id("Email"));
-            email.Click();
-            email.SendKeys("user@user.com");
-            var pass = driver.FindElement(By.Id("Password"));
-            pass.Click();
-            pass.SendKeys("p@sw1ooorD\n");
+            loginPage.SendTextToField(loginPage.Email, "user@user.com");
+            loginPage.SendTextToField(loginPage.Password, "p@sw1ooorD");
+            loginPage.LoginButton.Click();
 
         }
 
@@ -77,6 +77,39 @@ namespace BudgetApplicationSeleniumTests
             driver.Close();
         }
 
+        [TestMethod]
+        [Priority(4)]
+        public void CreateCategoryWithSmallFirstLetterInNameShouldNotValid()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            driver.FindElement(By.XPath("/html/body/div/p/a")).Click();
+            var categoryName = driver.FindElement(By.Id("CategoryName"));
+            categoryName.SendKeys("test");
+            var button = driver.FindElement(By.XPath("/html/body/div/div[1]/div/form/div[2]/input"));
+            button.Click();
+
+            var result = driver.FindElement(By.XPath("/html/body/div/div[1]/div/form/div[1]/span")).Text;
+            StringAssert.Contains(result, "Invalid text format. Word starts with upper-case and contains only letters.");
+            driver.Close();
+
+        }
+
+        [TestMethod]
+        [Priority(5)]
+        public void CreateCategoryWithTooLongNameShouldNotValid()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            driver.FindElement(By.XPath("/html/body/div/p/a")).Click();
+            var categoryName = driver.FindElement(By.Id("CategoryName"));
+            categoryName.SendKeys("Testtesttesttesttesttesttesttest");
+            var button = driver.FindElement(By.XPath("/html/body/div/div[1]/div/form/div[2]/input"));
+            button.Click();
+
+            var result = driver.FindElement(By.Id("CategoryName-error")).Text;
+            StringAssert.Contains(result, "Please use name of length in range 3..30");
+            driver.Close();
+
+        }
 
     }
 }
