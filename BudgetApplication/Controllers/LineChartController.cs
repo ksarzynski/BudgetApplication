@@ -62,14 +62,16 @@ namespace BudgetApplication.Controllers
             string currentLoggedInUser = GetUserID();
             double[] yearsResult = GetYearlySumForUser(currentLoggedInUser);
 
-            List<Datasets> _dataSet = new List<Datasets>();
-            _dataSet.Add(new Datasets()
+            List<Datasets> _dataSet = new List<Datasets>
             {
-                Label = $"Current Year: {DateTime.Now.Year}",
-                Data = yearsResult,
-                BorderColor = "#800080",
-                BorderWidth = "1"
-            });
+                new Datasets()
+                {
+                    Label = $"Current Year: {DateTime.Now.Year}",
+                    Data = yearsResult,
+                    BorderColor = "#800080",
+                    BorderWidth = "1"
+                }
+            };
             _chart.Datasets = _dataSet;
             return Json(_chart);
         }
