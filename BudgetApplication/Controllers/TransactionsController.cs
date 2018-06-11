@@ -26,7 +26,7 @@ namespace BudgetApplication.Controllers
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var items = await _transactionsRepository.GetAllAsync();
-            return View(items.Where(x => x.UserID == userId));
+            return View(items.Where(x => x.UserID == userId).OrderByDescending(s => s.TransactionDate));
         }
 
         public async Task<IActionResult> Details(int? id)
