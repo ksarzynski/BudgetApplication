@@ -178,6 +178,12 @@ node_modules/
 .atom-build.json
 tags
 TAGS
+BudgetApplication.csproj.nuget.g.props
+BudgetApplicationSeleniumTests/obj/BudgetApplicationSeleniumTests.csproj.nuget.cache
+BudgetApplicationSeleniumTests/obj/project.assets.json
+BudgetApplicationTests/obj/BudgetApplicationTests.csproj.nuget.cache
+BudgetApplicationTests/obj/BudgetApplicationTests.csproj.nuget.g.props
+BudgetApplicationTests/obj/project.assets.json
 
 # RIA/Silverlight projects
 Generated_Code/
