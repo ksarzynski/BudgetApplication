@@ -16,10 +16,15 @@ namespace BudgetApplication.Models
 
         private string ProcessImage(string filename)
         {
+            var text = string.Empty;
             var solutionPath = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
             var tesseractPath = solutionPath + @"\tesseract-master.1671";
-            var image = File.ReadAllBytes(filename);
-            string text = ParseText(tesseractPath, image);
+            if (!string.IsNullOrEmpty(filename))
+            {
+                var image = File.ReadAllBytes(filename);
+                text = ParseText(tesseractPath, image);
+            }
+
             return text;
         }
 

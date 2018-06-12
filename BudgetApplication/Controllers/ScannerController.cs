@@ -24,6 +24,7 @@ namespace BudgetApplication.Controllers
         {
             var newFileName = string.Empty;
             var fileName = string.Empty;
+            var output = string.Empty;
 
             if (HttpContext.Request.Form.Files != null)
             {
@@ -47,16 +48,23 @@ namespace BudgetApplication.Controllers
                     }
                 }
             }
-            Tesseract tess = new Tesseract(fileName);
-            string text = tess.getText();
-            string pattern = @"SUMA.*? (\d+,\d+)";
-            Regex r = new Regex(pattern);
-            Match match = r.Match(text);
-            string sum = match.Groups[1].ToString();
-            string output = sum.Replace(",",".");
-            System.IO.File.Delete(fileName);
-            return RedirectToAction("Create", "Transactions", new { @value = output });
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                Tesseract tess = new Tesseract(fileName);
+                string text = tess.getText();
+                string pattern = @"SUMA.*? (\d+,\d+)";
+                Regex r = new Regex(pattern);
+                Match match = r.Match(text);
+                string sum = match.Groups[1].ToString();
+                string outputstr = sum.Replace(",", ".");
+                System.IO.File.Delete(fileName);
+                output = outputstr;
+            }
+                return RedirectToAction("Create", "Transactions", new { @value = output });
           }
+
+       
             
     }
+
 }
