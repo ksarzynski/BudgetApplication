@@ -17,7 +17,6 @@ namespace BudgetApplication.Models
         public double Price { get; set; }
         
         [Display(Name = "Transaction date")]
-        // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime TransactionDate { get; set; }
 

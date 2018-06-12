@@ -37,15 +37,17 @@ namespace BudgetApplication.Models
             try
             {
                 File.WriteAllBytes(tempImage, imageFile);
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.WorkingDirectory = tesseractPath;
-                info.UseShellExecute = false;
-                info.FileName = "cmd.exe";
-                info.Arguments =
+                ProcessStartInfo info = new ProcessStartInfo
+                {
+                    WorkingDirectory = tesseractPath,
+                    UseShellExecute = false,
+                    FileName = "cmd.exe",
+                    Arguments =
                     "/c tesseract.exe " +
                    tempImage + " " +
                     tempOutput +
-                    " -l " + string.Join("+", "pol");
+                    " -l " + string.Join("+", "pol")
+                };
                 Process process = Process.Start(info);
                 process.WaitForExit();
                 if (process.ExitCode == 0)
