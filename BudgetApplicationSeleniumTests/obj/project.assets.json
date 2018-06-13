@@ -5673,23 +5673,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kamil\\.nuget\\packages\\": {},
+    "C:\\Users\\Penta6ram\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
+      "projectUniqueName": "C:\\Users\\Penta6ram\\Source\\Repos\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
       "projectName": "BudgetApplicationSeleniumTests",
-      "projectPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
-      "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kamil\\Desktop\\BudgetApplication\\BudgetApplicationSeleniumTests\\obj\\",
+      "projectPath": "C:\\Users\\Penta6ram\\Source\\Repos\\BudgetApplication\\BudgetApplicationSeleniumTests\\BudgetApplicationSeleniumTests.csproj",
+      "packagesPath": "C:\\Users\\Penta6ram\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Penta6ram\\Source\\Repos\\BudgetApplication\\BudgetApplicationSeleniumTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Penta6ram\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
